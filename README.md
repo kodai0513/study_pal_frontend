@@ -1,16 +1,21 @@
-# study_pal_frontend
+### openApiGenetatorを使用してバックエンドで定義しているスキーマを自動生成する
 
-A new Flutter project.
+openapi-generatorが入っていない場合はインストールする
+```sh
+brew install openapi-generator
+```
 
-## Getting Started
+スキーマ情報にエラーがないか確認する
+```sh
+openapi-generator validate -i http://localhost:8000/openapi.json
+```
 
-This project is a starting point for a Flutter application.
+dart ジェネレーターで openapi ディレクトリに生成する
+```sh
+openapi-generator generate -i http://localhost:8000/openapi.json -g dart-dio -o openapi
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+生成した後にbuild_runnerを実行する
+```sh
+cd openapi && flutter pub run build_runner build --delete-conflicting-outputs
+```
