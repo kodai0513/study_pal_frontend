@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_pal_frontend/view/timeline/timeline_page.dart';
+import 'package:study_pal_frontend/page/timeline/timeline_page.dart';
 
 class MainTabView extends StatefulWidget {
   const MainTabView({super.key});
