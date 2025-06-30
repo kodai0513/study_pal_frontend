@@ -1,6 +1,6 @@
 name: study_pal_frontend
 publish_to: none
-description: Minimal Flutter TODO app with MVVM
+description: studyPalのスマホアプリ
 version: 1.0.0+1
 
 assets:
