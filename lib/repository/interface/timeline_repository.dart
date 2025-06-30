@@ -3,5 +3,9 @@ import 'package:study_pal_frontend/core/exception/repository/repository_exceptio
 import 'package:study_pal_frontend/core/mold/common/result.dart';
 
 abstract class TimelineRepository {
-  Future<Result<TimelineResp, RepositoryException>> getTimelines();
+  Future<Result<TimelineResp, RepositoryException>> getTimelines({
+    int pageSize,
+    String? nextPageToken,
+    String? prevPageToken,
+  });
 }

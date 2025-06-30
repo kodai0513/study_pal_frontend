@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'page/tab/main_tab_view.dart';
-import 'router/app_router.dart';
+import 'package:study_pal_frontend/router/app_router.dart';
 
 void main() {
   runApp(
@@ -16,14 +15,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'TODO App',
+    ColorScheme defaultColors = const ColorScheme.light(
+      primary: Colors.blue,
+      onPrimary: Colors.blueGrey,
+      primaryContainer: Colors.blue,
+      onPrimaryContainer: Colors.blueGrey,
+      secondary: Colors.cyanAccent,
+      onSecondary: Colors.cyan,
+      surface: Colors.white,
+      onSurface: Colors.black,
+      error: Colors.redAccent,
+    );
+    return MaterialApp.router( 
+      title: 'StudyPalApp',
+      themeMode: ThemeMode.light,
+      routerConfig: router,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: defaultColors,
         useMaterial3: true,
+        fontFamily: 'Lato',
       ),
-      home: const MainTabView(),
-      onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }

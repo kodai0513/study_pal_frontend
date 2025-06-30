@@ -8,6 +8,7 @@ import 'package:study_pal_frontend/core/exception/repository/internal_server_err
 import 'package:study_pal_frontend/core/exception/repository/not_found_exception.dart';
 import 'package:study_pal_frontend/core/exception/repository/repository_exception.dart';
 import 'package:study_pal_frontend/core/exception/repository/request_timeout_exception.dart';
+import 'package:study_pal_frontend/core/exception/repository/tcp_connection_exception.dart';
 import 'package:study_pal_frontend/core/exception/repository/unauthorized_exception.dart';
 import 'package:study_pal_frontend/core/exception/repository/unkown_exception.dart';
 import 'package:study_pal_frontend/core/exception/repository/unprocessable_content_exception.dart';
@@ -24,17 +25,22 @@ Future<Result<T, RepositoryException>> responseHandler<T>(Future<Response<T>> Fu
     return Result.ok(res);
   } on DioException catch (e) {
     final statusCode = e.response?.statusCode;
-    final exception = switch (statusCode) {
-      HttpStatus.badRequest => BadRequestException(),
-      HttpStatus.forbidden => ForbiddenException(),
-      HttpStatus.internalServerError => InternalServerErrorException(),
-      HttpStatus.notFound => NotFoundException(),
-      HttpStatus.requestTimeout => RequestTimeoutException(),
-      HttpStatus.unauthorized => UnauthorizedException(),
-      HttpStatus.unprocessableEntity => UnprocessableContentException(),
-      _ => UnkownException(),
-    };
 
-    return Result.err(exception);
+    if(statusCode != null) {
+      final exception = switch (statusCode) {
+        HttpStatus.badRequest => BadRequestException(),
+        HttpStatus.forbidden => ForbiddenException(),
+        HttpStatus.internalServerError => InternalServerErrorException(),
+        HttpStatus.notFound => NotFoundException(),
+        HttpStatus.requestTimeout => RequestTimeoutException(),
+        HttpStatus.unauthorized => UnauthorizedException(),
+        HttpStatus.unprocessableEntity => UnprocessableContentException(),
+        _ => UnkownException(),
+      };
+
+      return Result.err(exception);
+    }
+
+    return Result.err(TcpConnectionException());    
   } 
 }

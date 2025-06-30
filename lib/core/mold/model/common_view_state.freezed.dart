@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'page_state.dart';
+part of 'common_view_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,11 +14,11 @@ part of 'page_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$PageState<T> {
+mixin _$CommonViewState<T> {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PageState<T>);
+        (other.runtimeType == runtimeType && other is CommonViewState<T>);
   }
 
   @override
@@ -26,54 +26,57 @@ mixin _$PageState<T> {
 
   @override
   String toString() {
-    return 'PageState<$T>()';
+    return 'CommonViewState<$T>()';
   }
 }
 
 /// @nodoc
-class $PageStateCopyWith<T, $Res> {
-  $PageStateCopyWith(PageState<T> _, $Res Function(PageState<T>) __);
+class $CommonViewStateCopyWith<T, $Res> {
+  $CommonViewStateCopyWith(
+      CommonViewState<T> _, $Res Function(CommonViewState<T>) __);
 }
 
 /// @nodoc
 
-class PageLoadingState<T> implements PageState<T> {
-  const PageLoadingState();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PageLoadingState<T>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'PageState<$T>.loading()';
-  }
-}
-
-/// @nodoc
-
-class PageSuccessState<T> implements PageState<T> {
-  const PageSuccessState(this.pageSuccessState);
-
-  final T pageSuccessState;
-
-  /// Create a copy of PageState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $PageSuccessStateCopyWith<T, PageSuccessState<T>> get copyWith =>
-      _$PageSuccessStateCopyWithImpl<T, PageSuccessState<T>>(this, _$identity);
+class CommonViewLoadingState<T> implements CommonViewState<T> {
+  const CommonViewLoadingState();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PageSuccessState<T> &&
+            other is CommonViewLoadingState<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'CommonViewState<$T>.loading()';
+  }
+}
+
+/// @nodoc
+
+class CommonViewSuccessState<T> implements CommonViewState<T> {
+  const CommonViewSuccessState(this.pageSuccessState);
+
+  final T pageSuccessState;
+
+  /// Create a copy of CommonViewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CommonViewSuccessStateCopyWith<T, CommonViewSuccessState<T>> get copyWith =>
+      _$CommonViewSuccessStateCopyWithImpl<T, CommonViewSuccessState<T>>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CommonViewSuccessState<T> &&
             const DeepCollectionEquality()
                 .equals(other.pageSuccessState, pageSuccessState));
   }
@@ -84,35 +87,35 @@ class PageSuccessState<T> implements PageState<T> {
 
   @override
   String toString() {
-    return 'PageState<$T>.success(pageSuccessState: $pageSuccessState)';
+    return 'CommonViewState<$T>.success(pageSuccessState: $pageSuccessState)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PageSuccessStateCopyWith<T, $Res>
-    implements $PageStateCopyWith<T, $Res> {
-  factory $PageSuccessStateCopyWith(
-          PageSuccessState<T> value, $Res Function(PageSuccessState<T>) _then) =
-      _$PageSuccessStateCopyWithImpl;
+abstract mixin class $CommonViewSuccessStateCopyWith<T, $Res>
+    implements $CommonViewStateCopyWith<T, $Res> {
+  factory $CommonViewSuccessStateCopyWith(CommonViewSuccessState<T> value,
+          $Res Function(CommonViewSuccessState<T>) _then) =
+      _$CommonViewSuccessStateCopyWithImpl;
   @useResult
   $Res call({T pageSuccessState});
 }
 
 /// @nodoc
-class _$PageSuccessStateCopyWithImpl<T, $Res>
-    implements $PageSuccessStateCopyWith<T, $Res> {
-  _$PageSuccessStateCopyWithImpl(this._self, this._then);
+class _$CommonViewSuccessStateCopyWithImpl<T, $Res>
+    implements $CommonViewSuccessStateCopyWith<T, $Res> {
+  _$CommonViewSuccessStateCopyWithImpl(this._self, this._then);
 
-  final PageSuccessState<T> _self;
-  final $Res Function(PageSuccessState<T>) _then;
+  final CommonViewSuccessState<T> _self;
+  final $Res Function(CommonViewSuccessState<T>) _then;
 
-  /// Create a copy of PageState
+  /// Create a copy of CommonViewState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? pageSuccessState = freezed,
   }) {
-    return _then(PageSuccessState<T>(
+    return _then(CommonViewSuccessState<T>(
       freezed == pageSuccessState
           ? _self.pageSuccessState
           : pageSuccessState // ignore: cast_nullable_to_non_nullable
@@ -123,23 +126,24 @@ class _$PageSuccessStateCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class PageErrorState<T> implements PageState<T> {
-  const PageErrorState(this.message);
+class CommonViewErrorState<T> implements CommonViewState<T> {
+  const CommonViewErrorState(this.message);
 
   final String message;
 
-  /// Create a copy of PageState
+  /// Create a copy of CommonViewState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PageErrorStateCopyWith<T, PageErrorState<T>> get copyWith =>
-      _$PageErrorStateCopyWithImpl<T, PageErrorState<T>>(this, _$identity);
+  $CommonViewErrorStateCopyWith<T, CommonViewErrorState<T>> get copyWith =>
+      _$CommonViewErrorStateCopyWithImpl<T, CommonViewErrorState<T>>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PageErrorState<T> &&
+            other is CommonViewErrorState<T> &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -148,35 +152,35 @@ class PageErrorState<T> implements PageState<T> {
 
   @override
   String toString() {
-    return 'PageState<$T>.error(message: $message)';
+    return 'CommonViewState<$T>.error(message: $message)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PageErrorStateCopyWith<T, $Res>
-    implements $PageStateCopyWith<T, $Res> {
-  factory $PageErrorStateCopyWith(
-          PageErrorState<T> value, $Res Function(PageErrorState<T>) _then) =
-      _$PageErrorStateCopyWithImpl;
+abstract mixin class $CommonViewErrorStateCopyWith<T, $Res>
+    implements $CommonViewStateCopyWith<T, $Res> {
+  factory $CommonViewErrorStateCopyWith(CommonViewErrorState<T> value,
+          $Res Function(CommonViewErrorState<T>) _then) =
+      _$CommonViewErrorStateCopyWithImpl;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$PageErrorStateCopyWithImpl<T, $Res>
-    implements $PageErrorStateCopyWith<T, $Res> {
-  _$PageErrorStateCopyWithImpl(this._self, this._then);
+class _$CommonViewErrorStateCopyWithImpl<T, $Res>
+    implements $CommonViewErrorStateCopyWith<T, $Res> {
+  _$CommonViewErrorStateCopyWithImpl(this._self, this._then);
 
-  final PageErrorState<T> _self;
-  final $Res Function(PageErrorState<T>) _then;
+  final CommonViewErrorState<T> _self;
+  final $Res Function(CommonViewErrorState<T>) _then;
 
-  /// Create a copy of PageState
+  /// Create a copy of CommonViewState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? message = null,
   }) {
-    return _then(PageErrorState<T>(
+    return _then(CommonViewErrorState<T>(
       null == message
           ? _self.message
           : message // ignore: cast_nullable_to_non_nullable

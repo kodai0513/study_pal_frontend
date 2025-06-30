@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:study_pal_frontend/page/timeline/timeline_page.dart';
 
-class MainTabView extends StatefulWidget {
-  const MainTabView({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<MainTabView> createState() => _MainTabViewState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MainTabViewState extends State<MainTabView> {
+class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
     const Placeholder(),
-    const TimelineView(),
+    const TimelinePage(),
     const Placeholder(),
     const Placeholder(),
     const Placeholder(),
@@ -26,8 +26,8 @@ class _MainTabViewState extends State<MainTabView> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: Theme.of(context).colorScheme.onPrimary,
+        unselectedItemColor: Theme.of(context).colorScheme.primary,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
