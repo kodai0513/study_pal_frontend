@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppIcon extends StatelessWidget {
-  const AppIcon({
+class SpIcon extends StatelessWidget {
+  const SpIcon({
     super.key,
     this.color,
     this.decoration,

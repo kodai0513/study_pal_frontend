@@ -15,4 +15,5 @@ abstract class TimelineViewSuccessState with _$TimelineViewSuccessState {
   }) = _TimelineViewSuccessState;
 }
 
+
 typedef TimelineViewState = CommonViewState<TimelineViewSuccessState>;
