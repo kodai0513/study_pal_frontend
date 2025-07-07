@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:study_pal_frontend/component/atom/app_floating_action_button.dart';
+import 'package:go_router/go_router.dart';
+import 'package:study_pal_frontend/component/atom/sp_floating_action_button.dart';
 import 'package:study_pal_frontend/view/timeline/timeline_view.dart';
 
 class TimelinePage extends ConsumerWidget {
@@ -14,33 +15,10 @@ class TimelinePage extends ConsumerWidget {
         Positioned(
           right: 16,
           bottom: 16,
-          child: AppFloatingActionButton(
+          child: SpFloatingActionButton(
             icon: Icons.add,
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: const Text('確認'),
-                    content: const Text('追加しますか？'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text('キャンセル'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          // 追加処理
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text('追加'),
-                      ),
-                    ],
-                  );
-                },
-              );
+              context.push('/article/create');
             },
           ),
         ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:study_pal_frontend/component/atom/app_icon.dart';
+import 'package:study_pal_frontend/component/atom/sp_icon.dart';
 
 class ArticleListTitle extends StatelessWidget {
   const ArticleListTitle({
     super.key,
-    required this.appIcon,
+    required this.icon,
     this.color,
     this.decoration,
     required this.description,
@@ -12,7 +12,7 @@ class ArticleListTitle extends StatelessWidget {
     required this.userName,
   });
 
-  final AppIcon appIcon;
+  final SpIcon icon;
   final Color? color;
   final BoxDecoration? decoration;
   final String description;
@@ -25,7 +25,7 @@ class ArticleListTitle extends StatelessWidget {
     decoration: decoration,
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-        leading: appIcon,
+        leading: icon,
         title: Row(
           children: [
             Text(nickName ?? ''),

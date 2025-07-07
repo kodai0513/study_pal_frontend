@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:study_pal_frontend/component/atom/app_icon.dart';
+import 'package:go_router/go_router.dart';
+import 'package:study_pal_frontend/component/atom/sp_icon.dart';
 import 'package:study_pal_frontend/component/organisms/articles/article_list_title.dart';
 import 'package:study_pal_frontend/model/view_state/timeline/timeline_view_state.dart';
 import 'package:study_pal_frontend/view/common/state_driven_view.dart';
 import 'package:study_pal_frontend/view_model/timeline/timeline_view_model.dart';
 import 'package:very_good_infinite_list/very_good_infinite_list.dart';
+
+final createSuccessReloadedProvider = StateProvider<bool>((ref) => false);
 
 class TimelineView extends ConsumerWidget {
   const TimelineView({super.key});
@@ -15,6 +17,18 @@ class TimelineView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(timelineViewModelProvider);
     final viewModel = ref.watch(timelineViewModelProvider.notifier);
+
+    final uri = GoRouterState.of(context).uri;
+    final shouldReload = uri.queryParameters['reload'] == 'true';
+
+    final hasReloaded = ref.watch(createSuccessReloadedProvider);
+
+    if (shouldReload && !hasReloaded) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        viewModel.load();
+        ref.read(createSuccessReloadedProvider.notifier).state = true;
+      });
+    }
 
     return StateDrivenView<TimelineViewSuccessState>(
       state: state,
@@ -45,7 +59,7 @@ class TimelineView extends ConsumerWidget {
             itemBuilder: (context, index) {
               final article = state.articleViews[index];
               return ArticleListTitle(
-                appIcon: const AppIcon(
+                icon: const SpIcon(
                   defaultIcon: Icons.person,
                   size: 40,
                 ),

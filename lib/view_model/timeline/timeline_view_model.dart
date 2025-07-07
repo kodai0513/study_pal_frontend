@@ -36,6 +36,9 @@ class TimelineViewModel extends StateNotifier<TimelineViewState> {
   }
 
   Future<void> nextDataLoad() async {
+    if (state is! CommonViewSuccessState<TimelineViewSuccessState>) {
+      return;
+    }
     final data = (state as CommonViewSuccessState<TimelineViewSuccessState>).pageSuccessState;
     if(data.pageInfo.nextPageToken == null) {
       return;
