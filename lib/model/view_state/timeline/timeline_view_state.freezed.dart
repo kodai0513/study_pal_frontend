@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$TimelineViewSuccessState {
-  BuiltList<ArticleView> get articleViews;
+  BuiltList<ArticleContent> get articleContents;
   PageInfo get pageInfo;
   bool get isNextLoading;
 
@@ -33,7 +33,7 @@ mixin _$TimelineViewSuccessState {
         (other.runtimeType == runtimeType &&
             other is TimelineViewSuccessState &&
             const DeepCollectionEquality()
-                .equals(other.articleViews, articleViews) &&
+                .equals(other.articleContents, articleContents) &&
             (identical(other.pageInfo, pageInfo) ||
                 other.pageInfo == pageInfo) &&
             (identical(other.isNextLoading, isNextLoading) ||
@@ -43,13 +43,13 @@ mixin _$TimelineViewSuccessState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(articleViews),
+      const DeepCollectionEquality().hash(articleContents),
       pageInfo,
       isNextLoading);
 
   @override
   String toString() {
-    return 'TimelineViewSuccessState(articleViews: $articleViews, pageInfo: $pageInfo, isNextLoading: $isNextLoading)';
+    return 'TimelineViewSuccessState(articleContents: $articleContents, pageInfo: $pageInfo, isNextLoading: $isNextLoading)';
   }
 }
 
@@ -60,7 +60,7 @@ abstract mixin class $TimelineViewSuccessStateCopyWith<$Res> {
       _$TimelineViewSuccessStateCopyWithImpl;
   @useResult
   $Res call(
-      {BuiltList<ArticleView> articleViews,
+      {BuiltList<ArticleContent> articleContents,
       PageInfo pageInfo,
       bool isNextLoading});
 }
@@ -78,15 +78,15 @@ class _$TimelineViewSuccessStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articleViews = null,
+    Object? articleContents = null,
     Object? pageInfo = null,
     Object? isNextLoading = null,
   }) {
     return _then(_self.copyWith(
-      articleViews: null == articleViews
-          ? _self.articleViews
-          : articleViews // ignore: cast_nullable_to_non_nullable
-              as BuiltList<ArticleView>,
+      articleContents: null == articleContents
+          ? _self.articleContents
+          : articleContents // ignore: cast_nullable_to_non_nullable
+              as BuiltList<ArticleContent>,
       pageInfo: null == pageInfo
           ? _self.pageInfo
           : pageInfo // ignore: cast_nullable_to_non_nullable
@@ -103,12 +103,12 @@ class _$TimelineViewSuccessStateCopyWithImpl<$Res>
 
 class _TimelineViewSuccessState implements TimelineViewSuccessState {
   const _TimelineViewSuccessState(
-      {required this.articleViews,
+      {required this.articleContents,
       required this.pageInfo,
       this.isNextLoading = false});
 
   @override
-  final BuiltList<ArticleView> articleViews;
+  final BuiltList<ArticleContent> articleContents;
   @override
   final PageInfo pageInfo;
   @override
@@ -130,7 +130,7 @@ class _TimelineViewSuccessState implements TimelineViewSuccessState {
         (other.runtimeType == runtimeType &&
             other is _TimelineViewSuccessState &&
             const DeepCollectionEquality()
-                .equals(other.articleViews, articleViews) &&
+                .equals(other.articleContents, articleContents) &&
             (identical(other.pageInfo, pageInfo) ||
                 other.pageInfo == pageInfo) &&
             (identical(other.isNextLoading, isNextLoading) ||
@@ -140,13 +140,13 @@ class _TimelineViewSuccessState implements TimelineViewSuccessState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(articleViews),
+      const DeepCollectionEquality().hash(articleContents),
       pageInfo,
       isNextLoading);
 
   @override
   String toString() {
-    return 'TimelineViewSuccessState(articleViews: $articleViews, pageInfo: $pageInfo, isNextLoading: $isNextLoading)';
+    return 'TimelineViewSuccessState(articleContents: $articleContents, pageInfo: $pageInfo, isNextLoading: $isNextLoading)';
   }
 }
 
@@ -159,7 +159,7 @@ abstract mixin class _$TimelineViewSuccessStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {BuiltList<ArticleView> articleViews,
+      {BuiltList<ArticleContent> articleContents,
       PageInfo pageInfo,
       bool isNextLoading});
 }
@@ -177,15 +177,15 @@ class __$TimelineViewSuccessStateCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? articleViews = null,
+    Object? articleContents = null,
     Object? pageInfo = null,
     Object? isNextLoading = null,
   }) {
     return _then(_TimelineViewSuccessState(
-      articleViews: null == articleViews
-          ? _self.articleViews
-          : articleViews // ignore: cast_nullable_to_non_nullable
-              as BuiltList<ArticleView>,
+      articleContents: null == articleContents
+          ? _self.articleContents
+          : articleContents // ignore: cast_nullable_to_non_nullable
+              as BuiltList<ArticleContent>,
       pageInfo: null == pageInfo
           ? _self.pageInfo
           : pageInfo // ignore: cast_nullable_to_non_nullable

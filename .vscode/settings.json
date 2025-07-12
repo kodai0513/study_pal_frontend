@@ -1,0 +1,11 @@
+{
+  "dart.analysisExcludedFolders": [
+    "openapi"
+  ],
+  "files.exclude": {
+    "**/openapi": true
+  },
+  "search.exclude": {
+    "**/openapi": true
+  }
+}
