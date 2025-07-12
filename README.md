@@ -17,7 +17,8 @@ openapi-generator generate -i http://localhost:8000/openapi.json -g dart-dio -o 
 
 生成した後にbuild_runnerを実行する
 ```sh
-cd openapi && flutter pub run build_runner build --delete-conflicting-outputs
+cd openapi
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 

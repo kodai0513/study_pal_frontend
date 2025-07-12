@@ -18,6 +18,7 @@ class SpIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iconColor = color ?? Theme.of(context).colorScheme.primary;
     final imageWidget = (iconUrl != null && iconUrl!.isNotEmpty)
         ? Image.network(
             iconUrl!,
@@ -25,7 +26,7 @@ class SpIcon extends StatelessWidget {
             height: size,
             errorBuilder: (_, __, ___) => Icon(defaultIcon, size: size, color: color),
           )
-        : Icon(defaultIcon, size: size, color: color);
+        : Icon(defaultIcon, size: size, color: iconColor);
 
     return Container(
       width: size,

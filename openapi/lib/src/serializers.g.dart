@@ -7,8 +7,8 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (Serializers().toBuilder()
+      ..add(ArticleContent.serializer)
       ..add(ArticleResp.serializer)
-      ..add(ArticleView.serializer)
       ..add(CreateArticleReq.serializer)
       ..add(CreateDescriptionProblemReq.serializer)
       ..add(CreateProblemReq.serializer)
@@ -22,7 +22,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ProblemResp.serializer)
       ..add(SelectionProblemAnswerResp.serializer)
       ..add(SelectionProblemResp.serializer)
-      ..add(TimelineResp.serializer)
+      ..add(TimelineViewResp.serializer)
       ..add(TrueOrFalseProblemResp.serializer)
       ..add(UpdateArticleReq.serializer)
       ..add(UpdateDescriptionProblemReq.serializer)
@@ -32,10 +32,12 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(UpdateWorkbookReq.serializer)
       ..add(ValidationError.serializer)
       ..add(ValidationErrorLocInner.serializer)
+      ..add(WorkbookListContent.serializer)
+      ..add(WorkbookListViewResp.serializer)
       ..add(WorkbookResp.serializer)
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(ArticleView)]),
-          () => ListBuilder<ArticleView>())
+          const FullType(BuiltList, const [const FullType(ArticleContent)]),
+          () => ListBuilder<ArticleContent>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(CreateDescriptionProblemReq)]),
@@ -78,7 +80,11 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ValidationErrorLocInner)]),
-          () => ListBuilder<ValidationErrorLocInner>()))
+          () => ListBuilder<ValidationErrorLocInner>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(WorkbookListContent)]),
+          () => ListBuilder<WorkbookListContent>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

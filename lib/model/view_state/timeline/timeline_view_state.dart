@@ -9,7 +9,7 @@ part 'timeline_view_state.freezed.dart';
 @freezed
 abstract class TimelineViewSuccessState with _$TimelineViewSuccessState {
   const factory TimelineViewSuccessState({
-    required BuiltList<ArticleView> articleViews,
+    required BuiltList<ArticleContent> articleContents,
     required PageInfo pageInfo,
     @Default(false) bool isNextLoading,
   }) = _TimelineViewSuccessState;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:study_pal_frontend/component/atom/sp_elevated_button.dart';
-import 'package:study_pal_frontend/component/organisms/articles/article_post_text_area.dart';
+import 'package:study_pal_frontend/component/organisms/article/article_post_text_area.dart';
 import 'package:study_pal_frontend/model/view_state/article/create_article_view_state.dart';
 import 'package:study_pal_frontend/view/common/state_driven_view.dart';
 import 'package:study_pal_frontend/view/timeline/timeline_view.dart';

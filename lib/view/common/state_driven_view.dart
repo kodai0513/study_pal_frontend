@@ -18,7 +18,7 @@ class StateDrivenView<ViewSuccessState> extends ConsumerWidget {
     return switch (state) {
       CommonViewLoadingState() => const SpLoadingWidget(message: '読み込み中...'),
       CommonViewSuccessState(:final pageSuccessState) => successBuilder(pageSuccessState),
-      CommonViewErrorState() => const SizedBox.shrink(),
+      CommonViewErrorState(:final message) => Text(message),
       _ => throw Error(),
     };
   }

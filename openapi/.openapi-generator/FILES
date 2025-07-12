@@ -1,8 +1,8 @@
 .gitignore
 README.md
 analysis_options.yaml
+doc/ArticleContent.md
 doc/ArticleResp.md
-doc/ArticleView.md
 doc/CreateArticleReq.md
 doc/CreateDescriptionProblemReq.md
 doc/CreateProblemReq.md
@@ -17,7 +17,7 @@ doc/PageInfo.md
 doc/ProblemResp.md
 doc/SelectionProblemAnswerResp.md
 doc/SelectionProblemResp.md
-doc/TimelineResp.md
+doc/TimelineViewResp.md
 doc/TrueOrFalseProblemResp.md
 doc/UpdateArticleReq.md
 doc/UpdateDescriptionProblemReq.md
@@ -27,6 +27,8 @@ doc/UpdateTrueOrFalseProblemReq.md
 doc/UpdateWorkbookReq.md
 doc/ValidationError.md
 doc/ValidationErrorLocInner.md
+doc/WorkbookListContent.md
+doc/WorkbookListViewResp.md
 doc/WorkbookResp.md
 lib/openapi.dart
 lib/src/api.dart
@@ -38,8 +40,8 @@ lib/src/auth/basic_auth.dart
 lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
+lib/src/model/article_content.dart
 lib/src/model/article_resp.dart
-lib/src/model/article_view.dart
 lib/src/model/create_article_req.dart
 lib/src/model/create_description_problem_req.dart
 lib/src/model/create_problem_req.dart
@@ -54,7 +56,7 @@ lib/src/model/page_info.dart
 lib/src/model/problem_resp.dart
 lib/src/model/selection_problem_answer_resp.dart
 lib/src/model/selection_problem_resp.dart
-lib/src/model/timeline_resp.dart
+lib/src/model/timeline_view_resp.dart
 lib/src/model/true_or_false_problem_resp.dart
 lib/src/model/update_article_req.dart
 lib/src/model/update_description_problem_req.dart
@@ -64,9 +66,8 @@ lib/src/model/update_true_or_false_problem_req.dart
 lib/src/model/update_workbook_req.dart
 lib/src/model/validation_error.dart
 lib/src/model/validation_error_loc_inner.dart
+lib/src/model/workbook_list_content.dart
+lib/src/model/workbook_list_view_resp.dart
 lib/src/model/workbook_resp.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/article_view_test.dart
-test/page_info_test.dart
-test/timeline_resp_test.dart

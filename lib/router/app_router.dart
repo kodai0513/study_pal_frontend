@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:study_pal_frontend/page/article/article_create_page.dart';
 import 'package:study_pal_frontend/page/tab_page.dart';
 import 'package:study_pal_frontend/page/timeline/timeline_page.dart';
+import 'package:study_pal_frontend/page/workbook/workbook_search_page.dart';
 
 final router = GoRouter(
   initialLocation: '/',
@@ -20,7 +21,7 @@ final router = GoRouter(
         ),
         GoRoute(
           path: '/workbook/search',
-          pageBuilder: (context, state) => const MaterialPage(child: Placeholder()),
+          pageBuilder: (context, state) => const MaterialPage(child: WorkbookSearchPage()),
         ),
         GoRoute(
           path: '/report',

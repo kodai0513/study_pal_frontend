@@ -26,7 +26,7 @@ class TimelineViewModel extends StateNotifier<TimelineViewState> {
       case Ok(value: final timelineResp):
         state = TimelineViewState.success(
           TimelineViewSuccessState(
-            articleViews: timelineResp.data,
+            articleContents: timelineResp.data,
             pageInfo: timelineResp.pageInfo,
           ),
         );
@@ -36,9 +36,6 @@ class TimelineViewModel extends StateNotifier<TimelineViewState> {
   }
 
   Future<void> nextDataLoad() async {
-    if (state is! CommonViewSuccessState<TimelineViewSuccessState>) {
-      return;
-    }
     final data = (state as CommonViewSuccessState<TimelineViewSuccessState>).pageSuccessState;
     if(data.pageInfo.nextPageToken == null) {
       return;
@@ -51,13 +48,15 @@ class TimelineViewModel extends StateNotifier<TimelineViewState> {
     state = TimelineViewState.success(data.copyWith(isNextLoading: false));
     switch (result) {
       case Ok(value: final timelineResp):
-      final newArticles = BuiltList<ArticleView>([...data.articleViews, ...timelineResp.data]);
+      final newArticles = BuiltList<ArticleContent>([...data.articleContents, ...timelineResp.data]);
         state = TimelineViewState.success(
           TimelineViewSuccessState(
-            articleViews: newArticles,
+            articleContents: newArticles,
             pageInfo: timelineResp.pageInfo,
           ),
         );
+      case Err(e: final exception):
+        state = TimelineViewState.error(exception.toString());
     }
   }
 }

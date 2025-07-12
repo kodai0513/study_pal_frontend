@@ -51,10 +51,10 @@ final api = Openapi().getDefaultApi();
 final CreateArticleReq createArticleReq = ; // CreateArticleReq | 
 
 try {
-    final response = await api.createArticlesPost(createArticleReq);
+    final response = await api.createApiV1ArticlesPost(createArticleReq);
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling DefaultApi->createArticlesPost: $e\n");
+    print("Exception when calling DefaultApi->createApiV1ArticlesPost: $e\n");
 }
 
 ```
@@ -65,26 +65,27 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-[*DefaultApi*](doc/DefaultApi.md) | [**createArticlesPost**](doc/DefaultApi.md#createarticlespost) | **POST** /articles/ | Create
-[*DefaultApi*](doc/DefaultApi.md) | [**createProblemsWorkbookIdPost**](doc/DefaultApi.md#createproblemsworkbookidpost) | **POST** /problems/{workbook_id} | Create
-[*DefaultApi*](doc/DefaultApi.md) | [**createWorkbooksPost**](doc/DefaultApi.md#createworkbookspost) | **POST** /workbooks/ | Create
-[*DefaultApi*](doc/DefaultApi.md) | [**deleteArticlesArticleIdDelete**](doc/DefaultApi.md#deletearticlesarticleiddelete) | **DELETE** /articles/{article_id} | Delete
-[*DefaultApi*](doc/DefaultApi.md) | [**deleteWorkbooksWorkbookIdDelete**](doc/DefaultApi.md#deleteworkbooksworkbookiddelete) | **DELETE** /workbooks/{workbook_id} | Delete
-[*DefaultApi*](doc/DefaultApi.md) | [**deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete**](doc/DefaultApi.md#deleteworkbooksworkbookiddescriptionproblemsdescriptionproblemiddelete) | **DELETE** /workbooks/{workbook_id}/description-problems/{description_problem_id} | Delete
-[*DefaultApi*](doc/DefaultApi.md) | [**deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete**](doc/DefaultApi.md#deleteworkbooksworkbookidselectionproblemsselectionproblemiddelete) | **DELETE** /workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Delete
-[*DefaultApi*](doc/DefaultApi.md) | [**deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete**](doc/DefaultApi.md#deleteworkbooksworkbookidtrueorfalseproblemstrueorfalseproblemiddelete) | **DELETE** /workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Delete
-[*DefaultApi*](doc/DefaultApi.md) | [**indexTimelinesGet**](doc/DefaultApi.md#indextimelinesget) | **GET** /timelines | Index
-[*DefaultApi*](doc/DefaultApi.md) | [**updateArticlesArticleIdPut**](doc/DefaultApi.md#updatearticlesarticleidput) | **PUT** /articles/{article_id} | Update
-[*DefaultApi*](doc/DefaultApi.md) | [**updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut**](doc/DefaultApi.md#updateworkbooksworkbookiddescriptionproblemsdescriptionproblemidput) | **PUT** /workbooks/{workbook_id}/description-problems/{description_problem_id} | Update
-[*DefaultApi*](doc/DefaultApi.md) | [**updateWorkbooksWorkbookIdPut**](doc/DefaultApi.md#updateworkbooksworkbookidput) | **PUT** /workbooks/{workbook_id} | Update
-[*DefaultApi*](doc/DefaultApi.md) | [**updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut**](doc/DefaultApi.md#updateworkbooksworkbookidselectionproblemsselectionproblemidput) | **PUT** /workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Update
-[*DefaultApi*](doc/DefaultApi.md) | [**updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut**](doc/DefaultApi.md#updateworkbooksworkbookidtrueorfalseproblemstrueorfalseproblemidput) | **PUT** /workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Update
+[*DefaultApi*](doc/DefaultApi.md) | [**createApiV1ArticlesPost**](doc/DefaultApi.md#createapiv1articlespost) | **POST** /api/v1/articles/ | Create
+[*DefaultApi*](doc/DefaultApi.md) | [**createApiV1ProblemsWorkbookIdPost**](doc/DefaultApi.md#createapiv1problemsworkbookidpost) | **POST** /api/v1/problems/{workbook_id} | Create
+[*DefaultApi*](doc/DefaultApi.md) | [**createApiV1WorkbooksPost**](doc/DefaultApi.md#createapiv1workbookspost) | **POST** /api/v1/workbooks/ | Create
+[*DefaultApi*](doc/DefaultApi.md) | [**deleteApiV1ArticlesArticleIdDelete**](doc/DefaultApi.md#deleteapiv1articlesarticleiddelete) | **DELETE** /api/v1/articles/{article_id} | Delete
+[*DefaultApi*](doc/DefaultApi.md) | [**deleteApiV1WorkbooksWorkbookIdDelete**](doc/DefaultApi.md#deleteapiv1workbooksworkbookiddelete) | **DELETE** /api/v1/workbooks/{workbook_id} | Delete
+[*DefaultApi*](doc/DefaultApi.md) | [**deleteApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete**](doc/DefaultApi.md#deleteapiv1workbooksworkbookiddescriptionproblemsdescriptionproblemiddelete) | **DELETE** /api/v1/workbooks/{workbook_id}/description-problems/{description_problem_id} | Delete
+[*DefaultApi*](doc/DefaultApi.md) | [**deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete**](doc/DefaultApi.md#deleteapiv1workbooksworkbookidselectionproblemsselectionproblemiddelete) | **DELETE** /api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Delete
+[*DefaultApi*](doc/DefaultApi.md) | [**deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete**](doc/DefaultApi.md#deleteapiv1workbooksworkbookidtrueorfalseproblemstrueorfalseproblemiddelete) | **DELETE** /api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Delete
+[*DefaultApi*](doc/DefaultApi.md) | [**indexApiV1TimelinesGet**](doc/DefaultApi.md#indexapiv1timelinesget) | **GET** /api/v1/timelines | Index
+[*DefaultApi*](doc/DefaultApi.md) | [**searchApiV1WorkbooksGet**](doc/DefaultApi.md#searchapiv1workbooksget) | **GET** /api/v1/workbooks/ | Search
+[*DefaultApi*](doc/DefaultApi.md) | [**updateApiV1ArticlesArticleIdPut**](doc/DefaultApi.md#updateapiv1articlesarticleidput) | **PUT** /api/v1/articles/{article_id} | Update
+[*DefaultApi*](doc/DefaultApi.md) | [**updateApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut**](doc/DefaultApi.md#updateapiv1workbooksworkbookiddescriptionproblemsdescriptionproblemidput) | **PUT** /api/v1/workbooks/{workbook_id}/description-problems/{description_problem_id} | Update
+[*DefaultApi*](doc/DefaultApi.md) | [**updateApiV1WorkbooksWorkbookIdPut**](doc/DefaultApi.md#updateapiv1workbooksworkbookidput) | **PUT** /api/v1/workbooks/{workbook_id} | Update
+[*DefaultApi*](doc/DefaultApi.md) | [**updateApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut**](doc/DefaultApi.md#updateapiv1workbooksworkbookidselectionproblemsselectionproblemidput) | **PUT** /api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Update
+[*DefaultApi*](doc/DefaultApi.md) | [**updateApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut**](doc/DefaultApi.md#updateapiv1workbooksworkbookidtrueorfalseproblemstrueorfalseproblemidput) | **PUT** /api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Update
 
 
 ## Documentation For Models
 
+ - [ArticleContent](doc/ArticleContent.md)
  - [ArticleResp](doc/ArticleResp.md)
- - [ArticleView](doc/ArticleView.md)
  - [CreateArticleReq](doc/CreateArticleReq.md)
  - [CreateDescriptionProblemReq](doc/CreateDescriptionProblemReq.md)
  - [CreateProblemReq](doc/CreateProblemReq.md)
@@ -98,7 +99,7 @@ Class | Method | HTTP request | Description
  - [ProblemResp](doc/ProblemResp.md)
  - [SelectionProblemAnswerResp](doc/SelectionProblemAnswerResp.md)
  - [SelectionProblemResp](doc/SelectionProblemResp.md)
- - [TimelineResp](doc/TimelineResp.md)
+ - [TimelineViewResp](doc/TimelineViewResp.md)
  - [TrueOrFalseProblemResp](doc/TrueOrFalseProblemResp.md)
  - [UpdateArticleReq](doc/UpdateArticleReq.md)
  - [UpdateDescriptionProblemReq](doc/UpdateDescriptionProblemReq.md)
@@ -108,6 +109,8 @@ Class | Method | HTTP request | Description
  - [UpdateWorkbookReq](doc/UpdateWorkbookReq.md)
  - [ValidationError](doc/ValidationError.md)
  - [ValidationErrorLocInner](doc/ValidationErrorLocInner.md)
+ - [WorkbookListContent](doc/WorkbookListContent.md)
+ - [WorkbookListViewResp](doc/WorkbookListViewResp.md)
  - [WorkbookResp](doc/WorkbookResp.md)
 
 
