@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:openapi/openapi.dart';
+import 'package:study_pal_frontend/constants/page/page_size.dart';
 import 'package:study_pal_frontend/core/exception/repository/repository_exception.dart';
 import 'package:study_pal_frontend/core/mold/common/result.dart';
 import 'package:study_pal_frontend/repository/common/response_handler.dart';
@@ -12,16 +13,14 @@ class TimelineRepositoryImpl implements TimelineRepository {
   final Ref ref;
 
   @override
-  Future<Result<TimelineResp, RepositoryException>> getTimelines({
-    int pageSize = 20,
+  Future<Result<TimelineViewResp, RepositoryException>> getTimelines({
+    int pageSize = PageSize.defaultSize,
     String? nextPageToken,
-    String? prevPageToken,
   }) async {
     final api = DefaultApi(ref.read(dioProvider), standardSerializers);
-    return await responseHandler(() => api.indexTimelinesGet(
+    return await responseHandler(() => api.indexApiV1TimelinesGet(
       pageSize: pageSize,
       nextPageToken: nextPageToken,
-      prevPageToken: prevPageToken,
     ));
   }
 }

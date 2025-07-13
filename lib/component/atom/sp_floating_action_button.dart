@@ -25,7 +25,7 @@ class SpFloatingActionButton extends StatelessWidget {
     final bgColor = backgroundColor ?? theme.colorScheme.primary;
     final fgColor = foregroundColor ?? theme.colorScheme.onPrimary;
     final iColor = iconColor ?? Colors.white;
-    final uiSize = size ?? UiSize.medium.size;
+    final uiSize = size ?? UiSize.medium;
 
     return SizedBox(
       width: uiSize,

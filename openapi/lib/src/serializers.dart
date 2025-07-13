@@ -14,8 +14,8 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:openapi/src/date_serializer.dart';
 import 'package:openapi/src/model/date.dart';
 
+import 'package:openapi/src/model/article_content.dart';
 import 'package:openapi/src/model/article_resp.dart';
-import 'package:openapi/src/model/article_view.dart';
 import 'package:openapi/src/model/create_article_req.dart';
 import 'package:openapi/src/model/create_description_problem_req.dart';
 import 'package:openapi/src/model/create_problem_req.dart';
@@ -29,7 +29,7 @@ import 'package:openapi/src/model/page_info.dart';
 import 'package:openapi/src/model/problem_resp.dart';
 import 'package:openapi/src/model/selection_problem_answer_resp.dart';
 import 'package:openapi/src/model/selection_problem_resp.dart';
-import 'package:openapi/src/model/timeline_resp.dart';
+import 'package:openapi/src/model/timeline_view_resp.dart';
 import 'package:openapi/src/model/true_or_false_problem_resp.dart';
 import 'package:openapi/src/model/update_article_req.dart';
 import 'package:openapi/src/model/update_description_problem_req.dart';
@@ -39,13 +39,15 @@ import 'package:openapi/src/model/update_true_or_false_problem_req.dart';
 import 'package:openapi/src/model/update_workbook_req.dart';
 import 'package:openapi/src/model/validation_error.dart';
 import 'package:openapi/src/model/validation_error_loc_inner.dart';
+import 'package:openapi/src/model/workbook_list_content.dart';
+import 'package:openapi/src/model/workbook_list_view_resp.dart';
 import 'package:openapi/src/model/workbook_resp.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
+  ArticleContent,
   ArticleResp,
-  ArticleView,
   CreateArticleReq,
   CreateDescriptionProblemReq,
   CreateProblemReq,
@@ -59,7 +61,7 @@ part 'serializers.g.dart';
   ProblemResp,
   SelectionProblemAnswerResp,
   SelectionProblemResp,
-  TimelineResp,
+  TimelineViewResp,
   TrueOrFalseProblemResp,
   UpdateArticleReq,
   UpdateDescriptionProblemReq,
@@ -69,6 +71,8 @@ part 'serializers.g.dart';
   UpdateWorkbookReq,
   ValidationError,
   ValidationErrorLocInner,
+  WorkbookListContent,
+  WorkbookListViewResp,
   WorkbookResp,
 ])
 Serializers serializers = (_$serializers.toBuilder()

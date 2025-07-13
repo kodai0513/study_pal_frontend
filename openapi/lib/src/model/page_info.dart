@@ -13,7 +13,6 @@ part 'page_info.g.dart';
 /// Properties:
 /// * [nextPageToken] 
 /// * [pageSize] 
-/// * [prevPageToken] 
 @BuiltValue()
 abstract class PageInfo implements Built<PageInfo, PageInfoBuilder> {
   @BuiltValueField(wireName: r'nextPageToken')
@@ -21,9 +20,6 @@ abstract class PageInfo implements Built<PageInfo, PageInfoBuilder> {
 
   @BuiltValueField(wireName: r'pageSize')
   int get pageSize;
-
-  @BuiltValueField(wireName: r'prevPageToken')
-  String? get prevPageToken;
 
   PageInfo._();
 
@@ -57,11 +53,6 @@ class _$PageInfoSerializer implements PrimitiveSerializer<PageInfo> {
     yield serializers.serialize(
       object.pageSize,
       specifiedType: const FullType(int),
-    );
-    yield r'prevPageToken';
-    yield object.prevPageToken == null ? null : serializers.serialize(
-      object.prevPageToken,
-      specifiedType: const FullType.nullable(String),
     );
   }
 
@@ -100,14 +91,6 @@ class _$PageInfoSerializer implements PrimitiveSerializer<PageInfo> {
             specifiedType: const FullType(int),
           ) as int;
           result.pageSize = valueDes;
-          break;
-        case r'prevPageToken':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.prevPageToken = valueDes;
           break;
         default:
           unhandled.add(key);

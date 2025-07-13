@@ -16,7 +16,7 @@ class ArticleRepositoryImpl implements ArticleRepository {
     required CreateArticleReq createArticleReq
   }) async {
     final api = DefaultApi(ref.read(dioProvider), standardSerializers);
-    return await responseHandler(() => api.createArticlesPost(
+    return await responseHandler(() => api.createApiV1ArticlesPost(
       createArticleReq: createArticleReq
     ));
   }

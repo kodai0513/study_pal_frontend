@@ -9,24 +9,25 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createArticlesPost**](DefaultApi.md#createarticlespost) | **POST** /articles/ | Create
-[**createProblemsWorkbookIdPost**](DefaultApi.md#createproblemsworkbookidpost) | **POST** /problems/{workbook_id} | Create
-[**createWorkbooksPost**](DefaultApi.md#createworkbookspost) | **POST** /workbooks/ | Create
-[**deleteArticlesArticleIdDelete**](DefaultApi.md#deletearticlesarticleiddelete) | **DELETE** /articles/{article_id} | Delete
-[**deleteWorkbooksWorkbookIdDelete**](DefaultApi.md#deleteworkbooksworkbookiddelete) | **DELETE** /workbooks/{workbook_id} | Delete
-[**deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete**](DefaultApi.md#deleteworkbooksworkbookiddescriptionproblemsdescriptionproblemiddelete) | **DELETE** /workbooks/{workbook_id}/description-problems/{description_problem_id} | Delete
-[**deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete**](DefaultApi.md#deleteworkbooksworkbookidselectionproblemsselectionproblemiddelete) | **DELETE** /workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Delete
-[**deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete**](DefaultApi.md#deleteworkbooksworkbookidtrueorfalseproblemstrueorfalseproblemiddelete) | **DELETE** /workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Delete
-[**indexTimelinesGet**](DefaultApi.md#indextimelinesget) | **GET** /timelines | Index
-[**updateArticlesArticleIdPut**](DefaultApi.md#updatearticlesarticleidput) | **PUT** /articles/{article_id} | Update
-[**updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut**](DefaultApi.md#updateworkbooksworkbookiddescriptionproblemsdescriptionproblemidput) | **PUT** /workbooks/{workbook_id}/description-problems/{description_problem_id} | Update
-[**updateWorkbooksWorkbookIdPut**](DefaultApi.md#updateworkbooksworkbookidput) | **PUT** /workbooks/{workbook_id} | Update
-[**updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut**](DefaultApi.md#updateworkbooksworkbookidselectionproblemsselectionproblemidput) | **PUT** /workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Update
-[**updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut**](DefaultApi.md#updateworkbooksworkbookidtrueorfalseproblemstrueorfalseproblemidput) | **PUT** /workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Update
+[**createApiV1ArticlesPost**](DefaultApi.md#createapiv1articlespost) | **POST** /api/v1/articles/ | Create
+[**createApiV1ProblemsWorkbookIdPost**](DefaultApi.md#createapiv1problemsworkbookidpost) | **POST** /api/v1/problems/{workbook_id} | Create
+[**createApiV1WorkbooksPost**](DefaultApi.md#createapiv1workbookspost) | **POST** /api/v1/workbooks/ | Create
+[**deleteApiV1ArticlesArticleIdDelete**](DefaultApi.md#deleteapiv1articlesarticleiddelete) | **DELETE** /api/v1/articles/{article_id} | Delete
+[**deleteApiV1WorkbooksWorkbookIdDelete**](DefaultApi.md#deleteapiv1workbooksworkbookiddelete) | **DELETE** /api/v1/workbooks/{workbook_id} | Delete
+[**deleteApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete**](DefaultApi.md#deleteapiv1workbooksworkbookiddescriptionproblemsdescriptionproblemiddelete) | **DELETE** /api/v1/workbooks/{workbook_id}/description-problems/{description_problem_id} | Delete
+[**deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete**](DefaultApi.md#deleteapiv1workbooksworkbookidselectionproblemsselectionproblemiddelete) | **DELETE** /api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Delete
+[**deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete**](DefaultApi.md#deleteapiv1workbooksworkbookidtrueorfalseproblemstrueorfalseproblemiddelete) | **DELETE** /api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Delete
+[**indexApiV1TimelinesGet**](DefaultApi.md#indexapiv1timelinesget) | **GET** /api/v1/timelines | Index
+[**searchApiV1WorkbooksGet**](DefaultApi.md#searchapiv1workbooksget) | **GET** /api/v1/workbooks/ | Search
+[**updateApiV1ArticlesArticleIdPut**](DefaultApi.md#updateapiv1articlesarticleidput) | **PUT** /api/v1/articles/{article_id} | Update
+[**updateApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut**](DefaultApi.md#updateapiv1workbooksworkbookiddescriptionproblemsdescriptionproblemidput) | **PUT** /api/v1/workbooks/{workbook_id}/description-problems/{description_problem_id} | Update
+[**updateApiV1WorkbooksWorkbookIdPut**](DefaultApi.md#updateapiv1workbooksworkbookidput) | **PUT** /api/v1/workbooks/{workbook_id} | Update
+[**updateApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut**](DefaultApi.md#updateapiv1workbooksworkbookidselectionproblemsselectionproblemidput) | **PUT** /api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Update
+[**updateApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut**](DefaultApi.md#updateapiv1workbooksworkbookidtrueorfalseproblemstrueorfalseproblemidput) | **PUT** /api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Update
 
 
-# **createArticlesPost**
-> ArticleResp createArticlesPost(createArticleReq)
+# **createApiV1ArticlesPost**
+> ArticleResp createApiV1ArticlesPost(createArticleReq)
 
 Create
 
@@ -38,10 +39,10 @@ final api = Openapi().getDefaultApi();
 final CreateArticleReq createArticleReq = ; // CreateArticleReq | 
 
 try {
-    final response = api.createArticlesPost(createArticleReq);
+    final response = api.createApiV1ArticlesPost(createArticleReq);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->createArticlesPost: $e\n');
+    print('Exception when calling DefaultApi->createApiV1ArticlesPost: $e\n');
 }
 ```
 
@@ -66,8 +67,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createProblemsWorkbookIdPost**
-> ProblemResp createProblemsWorkbookIdPost(workbookId, createProblemReq)
+# **createApiV1ProblemsWorkbookIdPost**
+> ProblemResp createApiV1ProblemsWorkbookIdPost(workbookId, createProblemReq)
 
 Create
 
@@ -80,10 +81,10 @@ final String workbookId = workbookId_example; // String |
 final CreateProblemReq createProblemReq = ; // CreateProblemReq | 
 
 try {
-    final response = api.createProblemsWorkbookIdPost(workbookId, createProblemReq);
+    final response = api.createApiV1ProblemsWorkbookIdPost(workbookId, createProblemReq);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->createProblemsWorkbookIdPost: $e\n');
+    print('Exception when calling DefaultApi->createApiV1ProblemsWorkbookIdPost: $e\n');
 }
 ```
 
@@ -109,8 +110,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createWorkbooksPost**
-> WorkbookResp createWorkbooksPost(createWorkbookReq)
+# **createApiV1WorkbooksPost**
+> WorkbookResp createApiV1WorkbooksPost(createWorkbookReq)
 
 Create
 
@@ -122,10 +123,10 @@ final api = Openapi().getDefaultApi();
 final CreateWorkbookReq createWorkbookReq = ; // CreateWorkbookReq | 
 
 try {
-    final response = api.createWorkbooksPost(createWorkbookReq);
+    final response = api.createApiV1WorkbooksPost(createWorkbookReq);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->createWorkbooksPost: $e\n');
+    print('Exception when calling DefaultApi->createApiV1WorkbooksPost: $e\n');
 }
 ```
 
@@ -150,8 +151,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteArticlesArticleIdDelete**
-> deleteArticlesArticleIdDelete(articleId)
+# **deleteApiV1ArticlesArticleIdDelete**
+> deleteApiV1ArticlesArticleIdDelete(articleId)
 
 Delete
 
@@ -163,9 +164,9 @@ final api = Openapi().getDefaultApi();
 final String articleId = articleId_example; // String | 
 
 try {
-    api.deleteArticlesArticleIdDelete(articleId);
+    api.deleteApiV1ArticlesArticleIdDelete(articleId);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->deleteArticlesArticleIdDelete: $e\n');
+    print('Exception when calling DefaultApi->deleteApiV1ArticlesArticleIdDelete: $e\n');
 }
 ```
 
@@ -190,8 +191,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteWorkbooksWorkbookIdDelete**
-> deleteWorkbooksWorkbookIdDelete(workbookId)
+# **deleteApiV1WorkbooksWorkbookIdDelete**
+> deleteApiV1WorkbooksWorkbookIdDelete(workbookId)
 
 Delete
 
@@ -203,9 +204,9 @@ final api = Openapi().getDefaultApi();
 final String workbookId = workbookId_example; // String | 
 
 try {
-    api.deleteWorkbooksWorkbookIdDelete(workbookId);
+    api.deleteApiV1WorkbooksWorkbookIdDelete(workbookId);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->deleteWorkbooksWorkbookIdDelete: $e\n');
+    print('Exception when calling DefaultApi->deleteApiV1WorkbooksWorkbookIdDelete: $e\n');
 }
 ```
 
@@ -230,8 +231,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete**
-> deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete(descriptionProblemId, workbookId)
+# **deleteApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete**
+> deleteApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete(descriptionProblemId, workbookId)
 
 Delete
 
@@ -244,9 +245,9 @@ final String descriptionProblemId = descriptionProblemId_example; // String |
 final String workbookId = workbookId_example; // String | 
 
 try {
-    api.deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete(descriptionProblemId, workbookId);
+    api.deleteApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete(descriptionProblemId, workbookId);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete: $e\n');
+    print('Exception when calling DefaultApi->deleteApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete: $e\n');
 }
 ```
 
@@ -272,8 +273,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete**
-> deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete(selectionProblemId, workbookId)
+# **deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete**
+> deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete(selectionProblemId, workbookId)
 
 Delete
 
@@ -286,9 +287,9 @@ final String selectionProblemId = selectionProblemId_example; // String |
 final String workbookId = workbookId_example; // String | 
 
 try {
-    api.deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete(selectionProblemId, workbookId);
+    api.deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete(selectionProblemId, workbookId);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete: $e\n');
+    print('Exception when calling DefaultApi->deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete: $e\n');
 }
 ```
 
@@ -314,8 +315,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete**
-> deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete(trueOrFalseProblemId, workbookId)
+# **deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete**
+> deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete(trueOrFalseProblemId, workbookId)
 
 Delete
 
@@ -328,9 +329,9 @@ final String trueOrFalseProblemId = trueOrFalseProblemId_example; // String |
 final String workbookId = workbookId_example; // String | 
 
 try {
-    api.deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete(trueOrFalseProblemId, workbookId);
+    api.deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete(trueOrFalseProblemId, workbookId);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete: $e\n');
+    print('Exception when calling DefaultApi->deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete: $e\n');
 }
 ```
 
@@ -356,8 +357,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **indexTimelinesGet**
-> TimelineResp indexTimelinesGet(nextPageToken, pageSize, prevPageToken)
+# **indexApiV1TimelinesGet**
+> TimelineViewResp indexApiV1TimelinesGet(nextPageToken, pageSize)
 
 Index
 
@@ -368,13 +369,12 @@ import 'package:openapi/api.dart';
 final api = Openapi().getDefaultApi();
 final String nextPageToken = nextPageToken_example; // String | 
 final int pageSize = 56; // int | 
-final String prevPageToken = prevPageToken_example; // String | 
 
 try {
-    final response = api.indexTimelinesGet(nextPageToken, pageSize, prevPageToken);
+    final response = api.indexApiV1TimelinesGet(nextPageToken, pageSize);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->indexTimelinesGet: $e\n');
+    print('Exception when calling DefaultApi->indexApiV1TimelinesGet: $e\n');
 }
 ```
 
@@ -384,11 +384,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **nextPageToken** | **String**|  | [optional] 
  **pageSize** | **int**|  | [optional] [default to 20]
- **prevPageToken** | **String**|  | [optional] 
 
 ### Return type
 
-[**TimelineResp**](TimelineResp.md)
+[**TimelineViewResp**](TimelineViewResp.md)
 
 ### Authorization
 
@@ -401,8 +400,53 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateArticlesArticleIdPut**
-> ArticleResp updateArticlesArticleIdPut(articleId, updateArticleReq)
+# **searchApiV1WorkbooksGet**
+> WorkbookListViewResp searchApiV1WorkbooksGet(keyword, nextPageToken, pageSize)
+
+Search
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+
+final api = Openapi().getDefaultApi();
+final String keyword = keyword_example; // String | 
+final String nextPageToken = nextPageToken_example; // String | 
+final int pageSize = 56; // int | 
+
+try {
+    final response = api.searchApiV1WorkbooksGet(keyword, nextPageToken, pageSize);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling DefaultApi->searchApiV1WorkbooksGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **keyword** | **String**|  | [optional] [default to '']
+ **nextPageToken** | **String**|  | [optional] 
+ **pageSize** | **int**|  | [optional] [default to 20]
+
+### Return type
+
+[**WorkbookListViewResp**](WorkbookListViewResp.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateApiV1ArticlesArticleIdPut**
+> ArticleResp updateApiV1ArticlesArticleIdPut(articleId, updateArticleReq)
 
 Update
 
@@ -415,10 +459,10 @@ final String articleId = articleId_example; // String |
 final UpdateArticleReq updateArticleReq = ; // UpdateArticleReq | 
 
 try {
-    final response = api.updateArticlesArticleIdPut(articleId, updateArticleReq);
+    final response = api.updateApiV1ArticlesArticleIdPut(articleId, updateArticleReq);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->updateArticlesArticleIdPut: $e\n');
+    print('Exception when calling DefaultApi->updateApiV1ArticlesArticleIdPut: $e\n');
 }
 ```
 
@@ -444,8 +488,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut**
-> DescriptionProblemResp updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut(descriptionProblemId, workbookId, updateDescriptionProblemReq)
+# **updateApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut**
+> DescriptionProblemResp updateApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut(descriptionProblemId, workbookId, updateDescriptionProblemReq)
 
 Update
 
@@ -459,10 +503,10 @@ final String workbookId = workbookId_example; // String |
 final UpdateDescriptionProblemReq updateDescriptionProblemReq = ; // UpdateDescriptionProblemReq | 
 
 try {
-    final response = api.updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut(descriptionProblemId, workbookId, updateDescriptionProblemReq);
+    final response = api.updateApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut(descriptionProblemId, workbookId, updateDescriptionProblemReq);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut: $e\n');
+    print('Exception when calling DefaultApi->updateApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut: $e\n');
 }
 ```
 
@@ -489,8 +533,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateWorkbooksWorkbookIdPut**
-> WorkbookResp updateWorkbooksWorkbookIdPut(workbookId, updateWorkbookReq)
+# **updateApiV1WorkbooksWorkbookIdPut**
+> WorkbookResp updateApiV1WorkbooksWorkbookIdPut(workbookId, updateWorkbookReq)
 
 Update
 
@@ -503,10 +547,10 @@ final String workbookId = workbookId_example; // String |
 final UpdateWorkbookReq updateWorkbookReq = ; // UpdateWorkbookReq | 
 
 try {
-    final response = api.updateWorkbooksWorkbookIdPut(workbookId, updateWorkbookReq);
+    final response = api.updateApiV1WorkbooksWorkbookIdPut(workbookId, updateWorkbookReq);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->updateWorkbooksWorkbookIdPut: $e\n');
+    print('Exception when calling DefaultApi->updateApiV1WorkbooksWorkbookIdPut: $e\n');
 }
 ```
 
@@ -532,8 +576,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut**
-> SelectionProblemResp updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut(selectionProblemId, workbookId, updateSelectionProblemReq)
+# **updateApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut**
+> SelectionProblemResp updateApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut(selectionProblemId, workbookId, updateSelectionProblemReq)
 
 Update
 
@@ -547,10 +591,10 @@ final String workbookId = workbookId_example; // String |
 final UpdateSelectionProblemReq updateSelectionProblemReq = ; // UpdateSelectionProblemReq | 
 
 try {
-    final response = api.updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut(selectionProblemId, workbookId, updateSelectionProblemReq);
+    final response = api.updateApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut(selectionProblemId, workbookId, updateSelectionProblemReq);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut: $e\n');
+    print('Exception when calling DefaultApi->updateApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut: $e\n');
 }
 ```
 
@@ -577,8 +621,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut**
-> TrueOrFalseProblemResp updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut(trueOrFalseProblemId, workbookId, updateTrueOrFalseProblemReq)
+# **updateApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut**
+> TrueOrFalseProblemResp updateApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut(trueOrFalseProblemId, workbookId, updateTrueOrFalseProblemReq)
 
 Update
 
@@ -592,10 +636,10 @@ final String workbookId = workbookId_example; // String |
 final UpdateTrueOrFalseProblemReq updateTrueOrFalseProblemReq = ; // UpdateTrueOrFalseProblemReq | 
 
 try {
-    final response = api.updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut(trueOrFalseProblemId, workbookId, updateTrueOrFalseProblemReq);
+    final response = api.updateApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut(trueOrFalseProblemId, workbookId, updateTrueOrFalseProblemReq);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling DefaultApi->updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut: $e\n');
+    print('Exception when calling DefaultApi->updateApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut: $e\n');
 }
 ```
 
