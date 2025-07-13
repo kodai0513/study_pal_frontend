@@ -16,14 +16,12 @@ class WorkbookRepositoryImpl implements WorkbookRepository {
     required String keyword,
     required int pageSize,
     String? nextPageToken,
-    String? prevPageToken,
   }) async {
     final api = DefaultApi(ref.read(dioProvider), standardSerializers);
     return await responseHandler(() => api.searchApiV1WorkbooksGet(
       keyword: keyword,
       pageSize: pageSize,
       nextPageToken: nextPageToken,
-      prevPageToken: prevPageToken,
     ));
   }
 }

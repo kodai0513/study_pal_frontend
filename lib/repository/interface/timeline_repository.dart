@@ -6,6 +6,5 @@ abstract class TimelineRepository {
   Future<Result<TimelineViewResp, RepositoryException>> getTimelines({
     int pageSize,
     String? nextPageToken,
-    String? prevPageToken,
   });
 }

@@ -358,7 +358,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **indexApiV1TimelinesGet**
-> TimelineViewResp indexApiV1TimelinesGet(nextPageToken, pageSize, prevPageToken)
+> TimelineViewResp indexApiV1TimelinesGet(nextPageToken, pageSize)
 
 Index
 
@@ -369,10 +369,9 @@ import 'package:openapi/api.dart';
 final api = Openapi().getDefaultApi();
 final String nextPageToken = nextPageToken_example; // String | 
 final int pageSize = 56; // int | 
-final String prevPageToken = prevPageToken_example; // String | 
 
 try {
-    final response = api.indexApiV1TimelinesGet(nextPageToken, pageSize, prevPageToken);
+    final response = api.indexApiV1TimelinesGet(nextPageToken, pageSize);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling DefaultApi->indexApiV1TimelinesGet: $e\n');
@@ -385,7 +384,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **nextPageToken** | **String**|  | [optional] 
  **pageSize** | **int**|  | [optional] [default to 20]
- **prevPageToken** | **String**|  | [optional] 
 
 ### Return type
 
@@ -403,7 +401,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchApiV1WorkbooksGet**
-> WorkbookListViewResp searchApiV1WorkbooksGet(keyword, nextPageToken, pageSize, prevPageToken)
+> WorkbookListViewResp searchApiV1WorkbooksGet(keyword, nextPageToken, pageSize)
 
 Search
 
@@ -415,10 +413,9 @@ final api = Openapi().getDefaultApi();
 final String keyword = keyword_example; // String | 
 final String nextPageToken = nextPageToken_example; // String | 
 final int pageSize = 56; // int | 
-final String prevPageToken = prevPageToken_example; // String | 
 
 try {
-    final response = api.searchApiV1WorkbooksGet(keyword, nextPageToken, pageSize, prevPageToken);
+    final response = api.searchApiV1WorkbooksGet(keyword, nextPageToken, pageSize);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling DefaultApi->searchApiV1WorkbooksGet: $e\n');
@@ -432,7 +429,6 @@ Name | Type | Description  | Notes
  **keyword** | **String**|  | [optional] [default to '']
  **nextPageToken** | **String**|  | [optional] 
  **pageSize** | **int**|  | [optional] [default to 20]
- **prevPageToken** | **String**|  | [optional] 
 
 ### Return type
 

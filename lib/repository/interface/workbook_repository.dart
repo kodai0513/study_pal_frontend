@@ -7,6 +7,5 @@ abstract class WorkbookRepository {
     required String keyword,
     required int pageSize,
     String? nextPageToken,
-    String? prevPageToken,
   });
 }

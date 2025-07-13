@@ -569,7 +569,6 @@ class DefaultApi {
   /// Parameters:
   /// * [nextPageToken] 
   /// * [pageSize] 
-  /// * [prevPageToken] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -582,7 +581,6 @@ class DefaultApi {
   Future<Response<TimelineViewResp>> indexApiV1TimelinesGet({ 
     String? nextPageToken,
     int? pageSize = 20,
-    String? prevPageToken,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -606,7 +604,6 @@ class DefaultApi {
     final _queryParameters = <String, dynamic>{
       r'next_page_token': encodeQueryParameter(_serializers, nextPageToken, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      r'prev_page_token': encodeQueryParameter(_serializers, prevPageToken, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -656,7 +653,6 @@ class DefaultApi {
   /// * [keyword] 
   /// * [nextPageToken] 
   /// * [pageSize] 
-  /// * [prevPageToken] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -670,7 +666,6 @@ class DefaultApi {
     String? keyword = '',
     String? nextPageToken,
     int? pageSize = 20,
-    String? prevPageToken,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -695,7 +690,6 @@ class DefaultApi {
       if (keyword != null) r'keyword': encodeQueryParameter(_serializers, keyword, const FullType(String)),
       r'next_page_token': encodeQueryParameter(_serializers, nextPageToken, const FullType(String)),
       if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-      r'prev_page_token': encodeQueryParameter(_serializers, prevPageToken, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

@@ -57,6 +57,7 @@ class TimelineView extends ConsumerWidget {
             itemBuilder: (context, index) {
               final article = state.articleContents[index];
               return ArticleListTitle(
+                key: ValueKey(article.id),
                 icon: const SpIcon(
                   defaultIcon: Icons.person,
                   size: 40,

@@ -9,20 +9,18 @@ class TimelinePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Stack(
-      children: [
-        TimelineView(key: key),
-        Positioned(
-          right: 16,
-          bottom: 16,
-          child: SpFloatingActionButton(
-            icon: Icons.add,
-            onPressed: () {
-              context.push('/article/create');
-            },
-          ),
+    return Scaffold(
+      body: TimelineView(key: key),
+      floatingActionButton: Positioned(
+        right: 16,
+        bottom: 16,
+        child: SpFloatingActionButton(
+          icon: Icons.add,
+          onPressed: () {
+            context.push('/article/create');
+          },
         ),
-      ]
+      ),
     );
   }
 }

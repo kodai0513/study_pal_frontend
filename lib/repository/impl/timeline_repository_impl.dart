@@ -16,13 +16,11 @@ class TimelineRepositoryImpl implements TimelineRepository {
   Future<Result<TimelineViewResp, RepositoryException>> getTimelines({
     int pageSize = PageSize.defaultSize,
     String? nextPageToken,
-    String? prevPageToken,
   }) async {
     final api = DefaultApi(ref.read(dioProvider), standardSerializers);
     return await responseHandler(() => api.indexApiV1TimelinesGet(
       pageSize: pageSize,
       nextPageToken: nextPageToken,
-      prevPageToken: prevPageToken,
     ));
   }
 }

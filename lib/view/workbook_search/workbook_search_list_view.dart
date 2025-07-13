@@ -1,12 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:study_pal_frontend/component/atom/sp_elevated_button.dart';
 import 'package:study_pal_frontend/component/atom/sp_icon.dart';
 import 'package:study_pal_frontend/component/organisms/workbook/workbook_list_card.dart';
 import 'package:study_pal_frontend/constants/ui/ui_size.dart';
 import 'package:study_pal_frontend/model/view_state/workbook_search_list/workbook_search_list.dart';
 import 'package:study_pal_frontend/view/common/state_driven_view.dart';
 import 'package:study_pal_frontend/view_model/workbook_search/workbook_search_list_view_model.dart';
+import 'package:very_good_infinite_list/very_good_infinite_list.dart';
 
 
 class WorkbookSearchListView extends ConsumerWidget {
@@ -15,6 +17,7 @@ class WorkbookSearchListView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(workbookSearchListViewModelProvider);
+    final viewModel = ref.watch(workbookSearchListViewModelProvider.notifier);
 
     return StateDrivenView<WorkbookSearchListViewSuccessState>(
       state: state,
@@ -29,12 +32,14 @@ class WorkbookSearchListView extends ConsumerWidget {
             ),
           );
         }
-        return ListView.builder(
+        return InfiniteList(
           itemCount: state.workbookContents.length,
+          onFetchData: viewModel.nextPage,
           itemBuilder: (context, index) {
             final item = state.workbookContents[index];
 
             return WorkbookListCard(
+              key: ValueKey(item.id),
               icon: const SpIcon(defaultIcon: Icons.book, size: UiSize.medium),
               title: item.title,
               description: item.description,

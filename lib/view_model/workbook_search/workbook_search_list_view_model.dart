@@ -2,6 +2,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:openapi/openapi.dart';
 import 'package:study_pal_frontend/constants/page/page_size.dart';
+import 'package:study_pal_frontend/core/exception/repository/repository_exception.dart';
 import 'package:study_pal_frontend/core/mold/common/result.dart';
 import 'package:study_pal_frontend/core/mold/model/common_view_state.dart';
 import 'package:study_pal_frontend/model/view_state/workbook_search_list/workbook_search_list.dart';
@@ -24,8 +25,7 @@ class WorkbookSearchListViewModel extends StateNotifier<WorkbookSearchListViewSt
       WorkbookSearchListViewSuccessState(
         pageInfo: PageInfo(
           (d) {
-            d.pageSize = PageSize.defaultSize;
-            d.prevPageToken = null;
+            d.pageSize = 3;
             d.nextPageToken = null;
           }
         ),
@@ -38,42 +38,48 @@ class WorkbookSearchListViewModel extends StateNotifier<WorkbookSearchListViewSt
     _keyword = value;
   }
 
-  Future<void> _getDataAndSetState({
-    String? prevPageToken,
+  Future<Result<WorkbookListViewResp, RepositoryException>> _getData({
     String? nextPageToken,
   }) async {
-    final data = (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>).pageSuccessState;
     state = const WorkbookSearchListViewState.loading();
-    final result = await _workbookRepository.getWorkbooks(keyword: _keyword, pageSize: PageSize.defaultSize, nextPageToken: nextPageToken, prevPageToken: prevPageToken);
-
-    switch (result) {
-      case Ok(value: final workbookListViewResp):
-        final newWorkbookContents = BuiltList<WorkbookListContent>([...data.workbookContents, ...workbookListViewResp.data]);
-          state = WorkbookSearchListViewState.success(
-            WorkbookSearchListViewSuccessState(
-              pageInfo: workbookListViewResp.pageInfo,
-              workbookContents: newWorkbookContents,
-            )
-          );
-    }
+    return  await _workbookRepository.getWorkbooks(keyword: _keyword, pageSize: 3, nextPageToken: nextPageToken);
   }
 
   Future<void> search() async {
-    await _getDataAndSetState();
+    final result = await _getData();
+
+    switch (result) {
+      case Ok(value: final workbookListViewResp):
+        state = WorkbookSearchListViewState.success(
+          WorkbookSearchListViewSuccessState(
+            pageInfo: workbookListViewResp.pageInfo,
+            workbookContents: workbookListViewResp.data,
+          )
+        );
+    }
   }
 
   Future<void> nextPage() async {
     final data = (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>).pageSuccessState;
-    await _getDataAndSetState(
+
+    if(data.pageInfo.nextPageToken == null) {
+      return;
+    }
+
+    final result = await _getData(
       nextPageToken: data.pageInfo.nextPageToken
     );
-  }
 
-  Future<void> prevPage() async {
-    final data = (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>).pageSuccessState;
-    await _getDataAndSetState(
-      prevPageToken: data.pageInfo.prevPageToken
-    );
+    switch (result) {
+      case Ok(value: final workbookListViewResp):
+        final newWorkbookContents = BuiltList<WorkbookListContent>([...data.workbookContents, ...workbookListViewResp.data]);
+        state = WorkbookSearchListViewState.success(
+          WorkbookSearchListViewSuccessState(
+            pageInfo: workbookListViewResp.pageInfo,
+            workbookContents: newWorkbookContents,
+          )
+        );
+    }
   }
 }
 
