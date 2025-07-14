@@ -25,7 +25,7 @@ class WorkbookSearchListViewModel extends StateNotifier<WorkbookSearchListViewSt
       WorkbookSearchListViewSuccessState(
         pageInfo: PageInfo(
           (d) {
-            d.pageSize = 3;
+            d.pageSize = PageSize.defaultSize;
             d.nextPageToken = null;
           }
         ),
@@ -42,7 +42,7 @@ class WorkbookSearchListViewModel extends StateNotifier<WorkbookSearchListViewSt
     String? nextPageToken,
   }) async {
     state = const WorkbookSearchListViewState.loading();
-    return  await _workbookRepository.getWorkbooks(keyword: _keyword, pageSize: 3, nextPageToken: nextPageToken);
+    return  await _workbookRepository.getWorkbooks(keyword: _keyword, pageSize: PageSize.defaultSize, nextPageToken: nextPageToken);
   }
 
   Future<void> search() async {

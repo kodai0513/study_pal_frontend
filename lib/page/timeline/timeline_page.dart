@@ -11,15 +11,11 @@ class TimelinePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: TimelineView(key: key),
-      floatingActionButton: Positioned(
-        right: 16,
-        bottom: 16,
-        child: SpFloatingActionButton(
-          icon: Icons.add,
-          onPressed: () {
-            context.push('/article/create');
-          },
-        ),
+      floatingActionButton: SpFloatingActionButton(
+        icon: Icons.add,
+        onPressed: () {
+          context.push('/article/create');
+        },
       ),
     );
   }

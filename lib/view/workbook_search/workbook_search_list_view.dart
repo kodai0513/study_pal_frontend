@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:study_pal_frontend/component/atom/sp_elevated_button.dart';
 import 'package:study_pal_frontend/component/atom/sp_icon.dart';
 import 'package:study_pal_frontend/component/organisms/workbook/workbook_list_card.dart';
 import 'package:study_pal_frontend/constants/ui/ui_size.dart';
