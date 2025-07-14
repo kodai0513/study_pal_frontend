@@ -13,15 +13,16 @@ part 'selection_problem_resp.g.dart';
 /// SelectionProblemResp
 ///
 /// Properties:
-/// * [createdAt] 
-/// * [updatedAt] 
-/// * [id] 
-/// * [selectionProblemAnswers] 
-/// * [statement] 
-/// * [workbookId] 
-/// * [workbookCategoryId] 
+/// * [createdAt]
+/// * [updatedAt]
+/// * [id]
+/// * [selectionProblemAnswers]
+/// * [statement]
+/// * [workbookId]
+/// * [workbookCategoryId]
 @BuiltValue()
-abstract class SelectionProblemResp implements Built<SelectionProblemResp, SelectionProblemRespBuilder> {
+abstract class SelectionProblemResp
+    implements Built<SelectionProblemResp, SelectionProblemRespBuilder> {
   @BuiltValueField(wireName: r'createdAt')
   DateTime get createdAt;
 
@@ -45,18 +46,24 @@ abstract class SelectionProblemResp implements Built<SelectionProblemResp, Selec
 
   SelectionProblemResp._();
 
-  factory SelectionProblemResp([void updates(SelectionProblemRespBuilder b)]) = _$SelectionProblemResp;
+  factory SelectionProblemResp([void updates(SelectionProblemRespBuilder b)]) =
+      _$SelectionProblemResp;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SelectionProblemRespBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SelectionProblemResp> get serializer => _$SelectionProblemRespSerializer();
+  static Serializer<SelectionProblemResp> get serializer =>
+      _$SelectionProblemRespSerializer();
 }
 
-class _$SelectionProblemRespSerializer implements PrimitiveSerializer<SelectionProblemResp> {
+class _$SelectionProblemRespSerializer
+    implements PrimitiveSerializer<SelectionProblemResp> {
   @override
-  final Iterable<Type> types = const [SelectionProblemResp, _$SelectionProblemResp];
+  final Iterable<Type> types = const [
+    SelectionProblemResp,
+    _$SelectionProblemResp
+  ];
 
   @override
   final String wireName = r'SelectionProblemResp';
@@ -84,7 +91,8 @@ class _$SelectionProblemRespSerializer implements PrimitiveSerializer<SelectionP
     yield r'selectionProblemAnswers';
     yield serializers.serialize(
       object.selectionProblemAnswers,
-      specifiedType: const FullType(BuiltList, [FullType(SelectionProblemAnswerResp)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(SelectionProblemAnswerResp)]),
     );
     yield r'statement';
     yield serializers.serialize(
@@ -97,10 +105,12 @@ class _$SelectionProblemRespSerializer implements PrimitiveSerializer<SelectionP
       specifiedType: const FullType(String),
     );
     yield r'workbookCategoryId';
-    yield object.workbookCategoryId == null ? null : serializers.serialize(
-      object.workbookCategoryId,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.workbookCategoryId == null
+        ? null
+        : serializers.serialize(
+            object.workbookCategoryId,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -109,7 +119,9 @@ class _$SelectionProblemRespSerializer implements PrimitiveSerializer<SelectionP
     SelectionProblemResp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -148,7 +160,8 @@ class _$SelectionProblemRespSerializer implements PrimitiveSerializer<SelectionP
         case r'selectionProblemAnswers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(SelectionProblemAnswerResp)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(SelectionProblemAnswerResp)]),
           ) as BuiltList<SelectionProblemAnswerResp>;
           result.selectionProblemAnswers.replace(valueDes);
           break;
@@ -202,4 +215,3 @@ class _$SelectionProblemRespSerializer implements PrimitiveSerializer<SelectionP
     return result.build();
   }
 }
-

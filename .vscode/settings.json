@@ -7,5 +7,21 @@
   },
   "search.exclude": {
     "**/openapi": true
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true
+  },
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": ".*\\.dart$",
+        "cmd": "flutter pub run build_runner build --delete-conflicting-outputs"
+      }
+    ]
   }
 }

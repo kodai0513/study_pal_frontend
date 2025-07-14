@@ -11,11 +11,13 @@ part 'update_description_problem_req.g.dart';
 /// UpdateDescriptionProblemReq
 ///
 /// Properties:
-/// * [correctStatement] 
-/// * [statement] 
-/// * [workbookCategoryId] 
+/// * [correctStatement]
+/// * [statement]
+/// * [workbookCategoryId]
 @BuiltValue()
-abstract class UpdateDescriptionProblemReq implements Built<UpdateDescriptionProblemReq, UpdateDescriptionProblemReqBuilder> {
+abstract class UpdateDescriptionProblemReq
+    implements
+        Built<UpdateDescriptionProblemReq, UpdateDescriptionProblemReqBuilder> {
   @BuiltValueField(wireName: r'correctStatement')
   String get correctStatement;
 
@@ -27,18 +29,25 @@ abstract class UpdateDescriptionProblemReq implements Built<UpdateDescriptionPro
 
   UpdateDescriptionProblemReq._();
 
-  factory UpdateDescriptionProblemReq([void updates(UpdateDescriptionProblemReqBuilder b)]) = _$UpdateDescriptionProblemReq;
+  factory UpdateDescriptionProblemReq(
+          [void updates(UpdateDescriptionProblemReqBuilder b)]) =
+      _$UpdateDescriptionProblemReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateDescriptionProblemReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateDescriptionProblemReq> get serializer => _$UpdateDescriptionProblemReqSerializer();
+  static Serializer<UpdateDescriptionProblemReq> get serializer =>
+      _$UpdateDescriptionProblemReqSerializer();
 }
 
-class _$UpdateDescriptionProblemReqSerializer implements PrimitiveSerializer<UpdateDescriptionProblemReq> {
+class _$UpdateDescriptionProblemReqSerializer
+    implements PrimitiveSerializer<UpdateDescriptionProblemReq> {
   @override
-  final Iterable<Type> types = const [UpdateDescriptionProblemReq, _$UpdateDescriptionProblemReq];
+  final Iterable<Type> types = const [
+    UpdateDescriptionProblemReq,
+    _$UpdateDescriptionProblemReq
+  ];
 
   @override
   final String wireName = r'UpdateDescriptionProblemReq';
@@ -59,10 +68,12 @@ class _$UpdateDescriptionProblemReqSerializer implements PrimitiveSerializer<Upd
       specifiedType: const FullType(String),
     );
     yield r'workbookCategoryId';
-    yield object.workbookCategoryId == null ? null : serializers.serialize(
-      object.workbookCategoryId,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.workbookCategoryId == null
+        ? null
+        : serializers.serialize(
+            object.workbookCategoryId,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -71,7 +82,9 @@ class _$UpdateDescriptionProblemReqSerializer implements PrimitiveSerializer<Upd
     UpdateDescriptionProblemReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -136,4 +149,3 @@ class _$UpdateDescriptionProblemReqSerializer implements PrimitiveSerializer<Upd
     return result.build();
   }
 }
-

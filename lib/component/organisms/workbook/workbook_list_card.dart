@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_pal_frontend/component/atom/sp_icon.dart';
+import '../../atom/sp_icon.dart';
 
 class WorkbookListCard extends StatelessWidget {
   const WorkbookListCard({
@@ -20,7 +20,7 @@ class WorkbookListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-    decoration: decoration,
+      decoration: decoration,
       child: Card(
         child: Column(
           children: <Widget>[
@@ -28,7 +28,7 @@ class WorkbookListCard extends StatelessWidget {
               leading: icon,
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: <Widget>[
                   Text(title),
                   const SizedBox(height: 10),
                   Text(description),

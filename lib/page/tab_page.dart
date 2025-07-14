@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class TabPage extends StatelessWidget {
-  final Widget child;
 
   const TabPage({super.key, required this.child});
+  final Widget child;
 
-  static final List<_TabInfo> _tabs = [
+  static final List<_TabInfo> _tabs = <_TabInfo>[
     const _TabInfo(label: 'ホーム', icon: Icons.home, path: '/'),
     const _TabInfo(label: 'タイムライン', icon: Icons.timeline, path: '/timeline'),
     const _TabInfo(label: '探す', icon: Icons.search, path: '/workbook/search'),
@@ -15,8 +15,8 @@ class TabPage extends StatelessWidget {
   ];
 
   int _locationToTabIndex(String location) {
-    final uri = Uri.parse(location);
-    final path = uri.path;
+    final Uri uri = Uri.parse(location);
+    final String path = uri.path;
 
     for (int i = 0; i < _tabs.length; i++) {
       if (path == _tabs[i].path || path.startsWith('${_tabs[i].path}/')) {
@@ -29,8 +29,8 @@ class TabPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final location = GoRouterState.of(context).uri.toString();
-    final currentIndex = _locationToTabIndex(location);
+    final String location = GoRouterState.of(context).uri.toString();
+    final int currentIndex = _locationToTabIndex(location);
 
     return Scaffold(
       appBar: AppBar(
@@ -41,12 +41,12 @@ class TabPage extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         items: _tabs
-            .map((tab) => BottomNavigationBarItem(
+            .map((_TabInfo tab) => BottomNavigationBarItem(
                   icon: Icon(tab.icon),
                   label: tab.label,
                 ))
             .toList(),
-        onTap: (index) {
+        onTap: (int index) {
           context.go(_tabs[index].path);
         },
       ),
@@ -55,13 +55,13 @@ class TabPage extends StatelessWidget {
 }
 
 class _TabInfo {
-  final String label;
-  final IconData icon;
-  final String path;
 
   const _TabInfo({
     required this.label,
     required this.icon,
     required this.path,
   });
+  final String label;
+  final IconData icon;
+  final String path;
 }

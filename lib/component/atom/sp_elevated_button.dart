@@ -20,10 +20,10 @@ class SpElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final bgColor = backgroundColor ?? theme.colorScheme.primary;
-    final fgColor = foregroundColor ?? theme.colorScheme.onPrimary;
-    final tColor = textColor ?? Colors.white;
+    final ThemeData theme = Theme.of(context);
+    final Color bgColor = backgroundColor ?? theme.colorScheme.primary;
+    final Color fgColor = foregroundColor ?? theme.colorScheme.onPrimary;
+    final Color tColor = textColor ?? Colors.white;
 
     return ElevatedButton(
       onPressed: enabled ? onPressed : null,
@@ -36,8 +36,8 @@ class SpElevatedButton extends StatelessWidget {
         style: TextStyle(
           color: tColor,
           fontWeight: FontWeight.bold,
-          ),
         ),
+      ),
     );
   }
 }

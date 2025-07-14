@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_pal_frontend/constants/ui/ui_size.dart';
+import '../../constants/ui/ui_size.dart';
 
 class SpFloatingActionButton extends StatelessWidget {
   const SpFloatingActionButton({
@@ -21,11 +21,11 @@ class SpFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final bgColor = backgroundColor ?? theme.colorScheme.primary;
-    final fgColor = foregroundColor ?? theme.colorScheme.onPrimary;
-    final iColor = iconColor ?? Colors.white;
-    final uiSize = size ?? UiSize.medium;
+    final ThemeData theme = Theme.of(context);
+    final Color bgColor = backgroundColor ?? theme.colorScheme.primary;
+    final Color fgColor = foregroundColor ?? theme.colorScheme.onPrimary;
+    final Color iColor = iconColor ?? Colors.white;
+    final double uiSize = size ?? UiSize.medium;
 
     return SizedBox(
       width: uiSize,

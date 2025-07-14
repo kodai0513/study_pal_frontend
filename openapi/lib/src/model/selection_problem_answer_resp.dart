@@ -11,13 +11,15 @@ part 'selection_problem_answer_resp.g.dart';
 /// SelectionProblemAnswerResp
 ///
 /// Properties:
-/// * [createdAt] 
-/// * [updatedAt] 
-/// * [id] 
-/// * [isCorrect] 
-/// * [statement] 
+/// * [createdAt]
+/// * [updatedAt]
+/// * [id]
+/// * [isCorrect]
+/// * [statement]
 @BuiltValue()
-abstract class SelectionProblemAnswerResp implements Built<SelectionProblemAnswerResp, SelectionProblemAnswerRespBuilder> {
+abstract class SelectionProblemAnswerResp
+    implements
+        Built<SelectionProblemAnswerResp, SelectionProblemAnswerRespBuilder> {
   @BuiltValueField(wireName: r'createdAt')
   DateTime get createdAt;
 
@@ -35,18 +37,25 @@ abstract class SelectionProblemAnswerResp implements Built<SelectionProblemAnswe
 
   SelectionProblemAnswerResp._();
 
-  factory SelectionProblemAnswerResp([void updates(SelectionProblemAnswerRespBuilder b)]) = _$SelectionProblemAnswerResp;
+  factory SelectionProblemAnswerResp(
+          [void updates(SelectionProblemAnswerRespBuilder b)]) =
+      _$SelectionProblemAnswerResp;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SelectionProblemAnswerRespBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SelectionProblemAnswerResp> get serializer => _$SelectionProblemAnswerRespSerializer();
+  static Serializer<SelectionProblemAnswerResp> get serializer =>
+      _$SelectionProblemAnswerRespSerializer();
 }
 
-class _$SelectionProblemAnswerRespSerializer implements PrimitiveSerializer<SelectionProblemAnswerResp> {
+class _$SelectionProblemAnswerRespSerializer
+    implements PrimitiveSerializer<SelectionProblemAnswerResp> {
   @override
-  final Iterable<Type> types = const [SelectionProblemAnswerResp, _$SelectionProblemAnswerResp];
+  final Iterable<Type> types = const [
+    SelectionProblemAnswerResp,
+    _$SelectionProblemAnswerResp
+  ];
 
   @override
   final String wireName = r'SelectionProblemAnswerResp';
@@ -89,7 +98,9 @@ class _$SelectionProblemAnswerRespSerializer implements PrimitiveSerializer<Sele
     SelectionProblemAnswerResp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -167,4 +178,3 @@ class _$SelectionProblemAnswerRespSerializer implements PrimitiveSerializer<Sele
     return result.build();
   }
 }
-

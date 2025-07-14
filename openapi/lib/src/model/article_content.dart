@@ -11,13 +11,14 @@ part 'article_content.g.dart';
 /// ArticleContent
 ///
 /// Properties:
-/// * [id] 
-/// * [description] 
-/// * [userId] 
-/// * [userName] 
-/// * [userNickname] 
+/// * [id]
+/// * [description]
+/// * [userId]
+/// * [userName]
+/// * [userNickname]
 @BuiltValue()
-abstract class ArticleContent implements Built<ArticleContent, ArticleContentBuilder> {
+abstract class ArticleContent
+    implements Built<ArticleContent, ArticleContentBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -35,16 +36,19 @@ abstract class ArticleContent implements Built<ArticleContent, ArticleContentBui
 
   ArticleContent._();
 
-  factory ArticleContent([void updates(ArticleContentBuilder b)]) = _$ArticleContent;
+  factory ArticleContent([void updates(ArticleContentBuilder b)]) =
+      _$ArticleContent;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ArticleContentBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ArticleContent> get serializer => _$ArticleContentSerializer();
+  static Serializer<ArticleContent> get serializer =>
+      _$ArticleContentSerializer();
 }
 
-class _$ArticleContentSerializer implements PrimitiveSerializer<ArticleContent> {
+class _$ArticleContentSerializer
+    implements PrimitiveSerializer<ArticleContent> {
   @override
   final Iterable<Type> types = const [ArticleContent, _$ArticleContent];
 
@@ -77,10 +81,12 @@ class _$ArticleContentSerializer implements PrimitiveSerializer<ArticleContent> 
       specifiedType: const FullType(String),
     );
     yield r'userNickname';
-    yield object.userNickname == null ? null : serializers.serialize(
-      object.userNickname,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.userNickname == null
+        ? null
+        : serializers.serialize(
+            object.userNickname,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -89,7 +95,9 @@ class _$ArticleContentSerializer implements PrimitiveSerializer<ArticleContent> 
     ArticleContent object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -168,4 +176,3 @@ class _$ArticleContentSerializer implements PrimitiveSerializer<ArticleContent> 
     return result.build();
   }
 }
-

@@ -14,10 +14,11 @@ part 'timeline_resp.g.dart';
 /// TimelineResp
 ///
 /// Properties:
-/// * [data] 
-/// * [pageInfo] 
+/// * [data]
+/// * [pageInfo]
 @BuiltValue()
-abstract class TimelineResp implements Built<TimelineResp, TimelineRespBuilder> {
+abstract class TimelineResp
+    implements Built<TimelineResp, TimelineRespBuilder> {
   @BuiltValueField(wireName: r'data')
   BuiltList<ArticleView> get data;
 
@@ -65,7 +66,9 @@ class _$TimelineRespSerializer implements PrimitiveSerializer<TimelineResp> {
     TimelineResp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -122,4 +125,3 @@ class _$TimelineRespSerializer implements PrimitiveSerializer<TimelineResp> {
     return result.build();
   }
 }
-

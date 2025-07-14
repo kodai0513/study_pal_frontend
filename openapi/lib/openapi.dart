@@ -40,4 +40,3 @@ export 'package:openapi/src/model/validation_error_loc_inner.dart';
 export 'package:openapi/src/model/workbook_list_content.dart';
 export 'package:openapi/src/model/workbook_list_view_resp.dart';
 export 'package:openapi/src/model/workbook_resp.dart';
-

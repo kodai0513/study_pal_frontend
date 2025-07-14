@@ -14,10 +14,11 @@ part 'timeline_view_resp.g.dart';
 /// TimelineViewResp
 ///
 /// Properties:
-/// * [data] 
-/// * [pageInfo] 
+/// * [data]
+/// * [pageInfo]
 @BuiltValue()
-abstract class TimelineViewResp implements Built<TimelineViewResp, TimelineViewRespBuilder> {
+abstract class TimelineViewResp
+    implements Built<TimelineViewResp, TimelineViewRespBuilder> {
   @BuiltValueField(wireName: r'data')
   BuiltList<ArticleContent> get data;
 
@@ -26,16 +27,19 @@ abstract class TimelineViewResp implements Built<TimelineViewResp, TimelineViewR
 
   TimelineViewResp._();
 
-  factory TimelineViewResp([void updates(TimelineViewRespBuilder b)]) = _$TimelineViewResp;
+  factory TimelineViewResp([void updates(TimelineViewRespBuilder b)]) =
+      _$TimelineViewResp;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TimelineViewRespBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<TimelineViewResp> get serializer => _$TimelineViewRespSerializer();
+  static Serializer<TimelineViewResp> get serializer =>
+      _$TimelineViewRespSerializer();
 }
 
-class _$TimelineViewRespSerializer implements PrimitiveSerializer<TimelineViewResp> {
+class _$TimelineViewRespSerializer
+    implements PrimitiveSerializer<TimelineViewResp> {
   @override
   final Iterable<Type> types = const [TimelineViewResp, _$TimelineViewResp];
 
@@ -65,7 +69,9 @@ class _$TimelineViewRespSerializer implements PrimitiveSerializer<TimelineViewRe
     TimelineViewResp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -83,7 +89,8 @@ class _$TimelineViewRespSerializer implements PrimitiveSerializer<TimelineViewRe
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ArticleContent)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(ArticleContent)]),
           ) as BuiltList<ArticleContent>;
           result.data.replace(valueDes);
           break;
@@ -122,4 +129,3 @@ class _$TimelineViewRespSerializer implements PrimitiveSerializer<TimelineViewRe
     return result.build();
   }
 }
-

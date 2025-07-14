@@ -1,8 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:openapi/openapi.dart';
-import 'package:study_pal_frontend/core/mold/model/common_view_state.dart';
-
+import '../../../core/mold/model/common_view_state.dart';
 
 part 'timeline_view_state.freezed.dart';
 
@@ -14,6 +13,5 @@ abstract class TimelineViewSuccessState with _$TimelineViewSuccessState {
     @Default(false) bool isNextLoading,
   }) = _TimelineViewSuccessState;
 }
-
 
 typedef TimelineViewState = CommonViewState<TimelineViewSuccessState>;
