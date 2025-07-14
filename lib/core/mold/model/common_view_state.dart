@@ -4,7 +4,8 @@ part 'common_view_state.freezed.dart';
 
 @freezed
 class CommonViewState<T> with _$CommonViewState<T> {
-  const factory CommonViewState.loading() = CommonViewLoadingState;
-  const factory CommonViewState.success(T pageSuccessState) = CommonViewSuccessState;
-  const factory CommonViewState.error(String message) = CommonViewErrorState;
+  const factory CommonViewState.loading() = CommonViewLoadingState<T>;
+  const factory CommonViewState.success(T pageSuccessState) =
+      CommonViewSuccessState<T>;
+  const factory CommonViewState.error(String message) = CommonViewErrorState<T>;
 }

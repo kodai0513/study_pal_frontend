@@ -17,7 +17,7 @@ class ArticlePostTextArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: <Widget>[
         TextField(
           focusNode: focusNode,
           maxLines: maxLines,
@@ -32,4 +32,3 @@ class ArticlePostTextArea extends StatelessWidget {
     );
   }
 }
-

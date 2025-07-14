@@ -11,12 +11,12 @@ part 'article_resp.g.dart';
 /// ArticleResp
 ///
 /// Properties:
-/// * [createdAt] 
-/// * [updatedAt] 
-/// * [id] 
-/// * [description] 
-/// * [pageId] 
-/// * [userId] 
+/// * [createdAt]
+/// * [updatedAt]
+/// * [id]
+/// * [description]
+/// * [pageId]
+/// * [userId]
 @BuiltValue()
 abstract class ArticleResp implements Built<ArticleResp, ArticleRespBuilder> {
   @BuiltValueField(wireName: r'createdAt')
@@ -81,10 +81,12 @@ class _$ArticleRespSerializer implements PrimitiveSerializer<ArticleResp> {
       specifiedType: const FullType(String),
     );
     yield r'pageId';
-    yield object.pageId == null ? null : serializers.serialize(
-      object.pageId,
-      specifiedType: const FullType.nullable(int),
-    );
+    yield object.pageId == null
+        ? null
+        : serializers.serialize(
+            object.pageId,
+            specifiedType: const FullType.nullable(int),
+          );
     yield r'userId';
     yield serializers.serialize(
       object.userId,
@@ -98,7 +100,9 @@ class _$ArticleRespSerializer implements PrimitiveSerializer<ArticleResp> {
     ArticleResp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -184,4 +188,3 @@ class _$ArticleRespSerializer implements PrimitiveSerializer<ArticleResp> {
     return result.build();
   }
 }
-

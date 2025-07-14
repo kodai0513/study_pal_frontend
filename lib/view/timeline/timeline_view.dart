@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:study_pal_frontend/component/atom/sp_icon.dart';
-import 'package:study_pal_frontend/component/organisms/article/article_list_title.dart';
-import 'package:study_pal_frontend/model/view_state/timeline/timeline_view_state.dart';
-import 'package:study_pal_frontend/view/common/state_driven_view.dart';
-import 'package:study_pal_frontend/view_model/timeline/timeline_view_model.dart';
+import 'package:openapi/openapi.dart';
 import 'package:very_good_infinite_list/very_good_infinite_list.dart';
 
-final createSuccessReloadedProvider = StateProvider<bool>((ref) => false);
+import '../../component/atom/sp_icon.dart';
+import '../../component/organisms/article/article_list_title.dart';
+import '../../model/view_state/timeline/timeline_view_state.dart';
+import '../../view_model/timeline/timeline_view_model.dart';
+import '../common/state_driven_view.dart';
+
+final StateProvider<bool> createSuccessReloadedProvider =
+    StateProvider<bool>((Ref<bool> ref) => false);
 
 class TimelineView extends ConsumerWidget {
   const TimelineView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(timelineViewModelProvider);
-    final viewModel = ref.watch(timelineViewModelProvider.notifier);
+    final TimelineViewState state = ref.watch(timelineViewModelProvider);
+    final TimelineViewModel viewModel =
+        ref.watch(timelineViewModelProvider.notifier);
 
-    final uri = GoRouterState.of(context).uri;
-    final shouldReload = uri.queryParameters['reload'] == 'true';
+    final Uri uri = GoRouterState.of(context).uri;
+    final bool shouldReload = uri.queryParameters['reload'] == 'true';
 
-    final hasReloaded = ref.watch(createSuccessReloadedProvider);
+    final bool hasReloaded = ref.watch(createSuccessReloadedProvider);
 
     if (shouldReload && !hasReloaded) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -32,13 +36,13 @@ class TimelineView extends ConsumerWidget {
 
     return StateDrivenView<TimelineViewSuccessState>(
       state: state,
-      successBuilder: (state) {
+      successBuilder: (TimelineViewSuccessState state) {
         if (state.articleContents.isEmpty) {
           return const Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('まだ何も投稿されていません', style: TextStyle(fontSize: 18)), 
+              children: <Widget>[
+                Text('まだ何も投稿されていません', style: TextStyle(fontSize: 18)),
               ],
             ),
           );
@@ -48,16 +52,16 @@ class TimelineView extends ConsumerWidget {
           color: Theme.of(context).colorScheme.primary,
           backgroundColor: Colors.white,
           strokeWidth: 2.0,
-          displacement: 40.0,
           child: InfiniteList(
             itemCount: state.articleContents.length,
             isLoading: state.isNextLoading,
             onFetchData: viewModel.nextDataLoad,
-            separatorBuilder: (context, index) => const Divider(),
-            itemBuilder: (context, index) {
-              final article = state.articleContents[index];
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+            itemBuilder: (BuildContext context, int index) {
+              final ArticleContent article = state.articleContents[index];
               return ArticleListTitle(
-                key: ValueKey(article.id),
+                key: ValueKey<String>(article.id),
                 icon: const SpIcon(
                   defaultIcon: Icons.person,
                   size: 40,

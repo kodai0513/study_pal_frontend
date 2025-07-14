@@ -1,10 +1,11 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:openapi/openapi.dart';
-import 'package:study_pal_frontend/core/exception/repository/repository_exception.dart';
-import 'package:study_pal_frontend/core/mold/common/result.dart';
-import 'package:study_pal_frontend/repository/common/response_handler.dart';
-import 'package:study_pal_frontend/provider/dio_provider.dart';
-import 'package:study_pal_frontend/repository/interface/workbook_repository.dart';
+
+import '../../core/exception/repository/repository_exception.dart';
+import '../../core/mold/common/result.dart';
+import '../../provider/dio_provider.dart';
+import '../common/response_handler.dart';
+import '../interface/workbook_repository.dart';
 
 class WorkbookRepositoryImpl implements WorkbookRepository {
   const WorkbookRepositoryImpl(this.ref);
@@ -17,15 +18,17 @@ class WorkbookRepositoryImpl implements WorkbookRepository {
     required int pageSize,
     String? nextPageToken,
   }) async {
-    final api = DefaultApi(ref.read(dioProvider), standardSerializers);
-    return await responseHandler(() => api.searchApiV1WorkbooksGet(
-      keyword: keyword,
-      pageSize: pageSize,
-      nextPageToken: nextPageToken,
-    ));
+    final DefaultApi api =
+        DefaultApi(ref.read(dioProvider), standardSerializers);
+    return responseHandler(() => api.searchApiV1WorkbooksGet(
+          keyword: keyword,
+          pageSize: pageSize,
+          nextPageToken: nextPageToken,
+        ));
   }
 }
 
-final workbookRepositoryProvider = Provider((ref) {
+final Provider<WorkbookRepositoryImpl> workbookRepositoryProvider =
+    Provider<WorkbookRepositoryImpl>((Ref ref) {
   return WorkbookRepositoryImpl(ref);
 });

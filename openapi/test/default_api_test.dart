@@ -1,7 +1,6 @@
 import 'package:test/test.dart';
 import 'package:openapi/openapi.dart';
 
-
 /// tests for DefaultApi
 void main() {
   final instance = Openapi().getDefaultApi();
@@ -45,21 +44,27 @@ void main() {
     // Delete
     //
     //Future deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete(String descriptionProblemId, String workbookId) async
-    test('test deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete', () async {
+    test(
+        'test deleteWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete',
+        () async {
       // TODO
     });
 
     // Delete
     //
     //Future deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete(String selectionProblemId, String workbookId) async
-    test('test deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete', () async {
+    test(
+        'test deleteWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete',
+        () async {
       // TODO
     });
 
     // Delete
     //
     //Future deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete(String trueOrFalseProblemId, String workbookId) async
-    test('test deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete', () async {
+    test(
+        'test deleteWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete',
+        () async {
       // TODO
     });
 
@@ -73,7 +78,9 @@ void main() {
     // Update
     //
     //Future<DescriptionProblemResp> updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut(String descriptionProblemId, String workbookId, UpdateDescriptionProblemReq updateDescriptionProblemReq) async
-    test('test updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut', () async {
+    test(
+        'test updateWorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut',
+        () async {
       // TODO
     });
 
@@ -87,16 +94,18 @@ void main() {
     // Update
     //
     //Future<SelectionProblemResp> updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut(String selectionProblemId, String workbookId, UpdateSelectionProblemReq updateSelectionProblemReq) async
-    test('test updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut', () async {
+    test('test updateWorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut',
+        () async {
       // TODO
     });
 
     // Update
     //
     //Future<TrueOrFalseProblemResp> updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut(String trueOrFalseProblemId, String workbookId, UpdateTrueOrFalseProblemReq updateTrueOrFalseProblemReq) async
-    test('test updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut', () async {
+    test(
+        'test updateWorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut',
+        () async {
       // TODO
     });
-
   });
 }

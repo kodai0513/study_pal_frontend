@@ -1,88 +1,105 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:openapi/openapi.dart';
-import 'package:study_pal_frontend/constants/page/page_size.dart';
-import 'package:study_pal_frontend/core/exception/repository/repository_exception.dart';
-import 'package:study_pal_frontend/core/mold/common/result.dart';
-import 'package:study_pal_frontend/core/mold/model/common_view_state.dart';
-import 'package:study_pal_frontend/model/view_state/workbook_search_list/workbook_search_list.dart';
-import 'package:study_pal_frontend/repository/impl/workbook_repository_impl.dart';
-import 'package:study_pal_frontend/repository/interface/workbook_repository.dart';
+import '../../constants/page/page_size.dart';
+import '../../core/exception/repository/repository_exception.dart';
+import '../../core/mold/common/result.dart';
+import '../../core/mold/model/common_view_state.dart';
+import '../../model/view_state/workbook_search_list/workbook_search_list.dart';
+import '../../repository/impl/workbook_repository_impl.dart';
+import '../../repository/interface/workbook_repository.dart';
 
-class WorkbookSearchListViewModel extends StateNotifier<WorkbookSearchListViewState> {
-  WorkbookSearchListViewModel(this._ref) : super(const WorkbookSearchListViewState.loading()) {
+class WorkbookSearchListViewModel
+    extends StateNotifier<WorkbookSearchListViewState> {
+  WorkbookSearchListViewModel(this._ref)
+      : super(const WorkbookSearchListViewState.loading()) {
     load();
   }
 
   late final Ref _ref;
 
-  late final WorkbookRepository _workbookRepository = _ref.read(workbookRepositoryProvider);
-
-  String _keyword = '';
+  late final WorkbookRepository _workbookRepository =
+      _ref.read(workbookRepositoryProvider);
 
   void load() {
-    state = WorkbookSearchListViewState.success(
-      WorkbookSearchListViewSuccessState(
-        pageInfo: PageInfo(
-          (d) {
-            d.pageSize = PageSize.defaultSize;
-            d.nextPageToken = null;
-          }
-        ),
-        workbookContents: ListBuilder<WorkbookListContent>().build(),
-      )
-    );
-  }
-
-  set keyword(String value) {
-    _keyword = value;
+    state =
+        WorkbookSearchListViewState.success(WorkbookSearchListViewSuccessState(
+      pageInfo: PageInfo((PageInfoBuilder d) {
+        d.pageSize = PageSize.defaultSize;
+        d.nextPageToken = null;
+      }),
+      workbookContents: ListBuilder<WorkbookListContent>().build(),
+    ));
   }
 
   Future<Result<WorkbookListViewResp, RepositoryException>> _getData({
     String? nextPageToken,
   }) async {
+    final WorkbookSearchListViewSuccessState data =
+        (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>)
+            .pageSuccessState;
     state = const WorkbookSearchListViewState.loading();
-    return  await _workbookRepository.getWorkbooks(keyword: _keyword, pageSize: PageSize.defaultSize, nextPageToken: nextPageToken);
+    return _workbookRepository.getWorkbooks(
+        keyword: data.keyword,
+        pageSize: PageSize.defaultSize,
+        nextPageToken: nextPageToken);
   }
 
   Future<void> search() async {
-    final result = await _getData();
+    final Result<WorkbookListViewResp, RepositoryException> result =
+        await _getData();
 
     switch (result) {
-      case Ok(value: final workbookListViewResp):
+      case Ok<WorkbookListViewResp, RepositoryException>(
+          value: final WorkbookListViewResp workbookListViewResp
+        ):
         state = WorkbookSearchListViewState.success(
-          WorkbookSearchListViewSuccessState(
-            pageInfo: workbookListViewResp.pageInfo,
-            workbookContents: workbookListViewResp.data,
-          )
-        );
+            WorkbookSearchListViewSuccessState(
+          pageInfo: workbookListViewResp.pageInfo,
+          workbookContents: workbookListViewResp.data,
+          isSearch: true,
+        ));
     }
   }
 
-  Future<void> nextPage() async {
-    final data = (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>).pageSuccessState;
+  void setkeyword(String value) {
+    final WorkbookSearchListViewSuccessState data =
+        (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>)
+            .pageSuccessState;
+    state = WorkbookSearchListViewState.success(data.copyWith(keyword: value));
+  }
 
-    if(data.pageInfo.nextPageToken == null) {
+  Future<void> nextPage() async {
+    final WorkbookSearchListViewSuccessState data =
+        (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>)
+            .pageSuccessState;
+
+    if (data.pageInfo.nextPageToken == null) {
       return;
     }
 
-    final result = await _getData(
-      nextPageToken: data.pageInfo.nextPageToken
-    );
+    final Result<WorkbookListViewResp, RepositoryException> result =
+        await _getData(nextPageToken: data.pageInfo.nextPageToken);
 
     switch (result) {
-      case Ok(value: final workbookListViewResp):
-        final newWorkbookContents = BuiltList<WorkbookListContent>([...data.workbookContents, ...workbookListViewResp.data]);
-        state = WorkbookSearchListViewState.success(
-          WorkbookSearchListViewSuccessState(
-            pageInfo: workbookListViewResp.pageInfo,
+      case Ok<WorkbookListViewResp, RepositoryException>(
+          value: final WorkbookListViewResp workbookListViewResp
+        ):
+        final BuiltList<WorkbookListContent> newWorkbookContents =
+            BuiltList<WorkbookListContent>(<dynamic>[
+          ...data.workbookContents,
+          ...workbookListViewResp.data
+        ]);
+        state = WorkbookSearchListViewState.success(data.copyWith(
             workbookContents: newWorkbookContents,
-          )
-        );
+            pageInfo: workbookListViewResp.pageInfo));
     }
   }
 }
 
-final workbookSearchListViewModelProvider = StateNotifierProvider<WorkbookSearchListViewModel, WorkbookSearchListViewState>(
-  (ref) => WorkbookSearchListViewModel(ref),
+final StateNotifierProvider<WorkbookSearchListViewModel,
+        WorkbookSearchListViewState> workbookSearchListViewModelProvider =
+    StateNotifierProvider<WorkbookSearchListViewModel,
+        WorkbookSearchListViewState>(
+  (Ref ref) => WorkbookSearchListViewModel(ref),
 );

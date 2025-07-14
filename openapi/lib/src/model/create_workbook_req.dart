@@ -11,10 +11,11 @@ part 'create_workbook_req.g.dart';
 /// CreateWorkbookReq
 ///
 /// Properties:
-/// * [title] 
-/// * [description] 
+/// * [title]
+/// * [description]
 @BuiltValue()
-abstract class CreateWorkbookReq implements Built<CreateWorkbookReq, CreateWorkbookReqBuilder> {
+abstract class CreateWorkbookReq
+    implements Built<CreateWorkbookReq, CreateWorkbookReqBuilder> {
   @BuiltValueField(wireName: r'title')
   String get title;
 
@@ -23,16 +24,19 @@ abstract class CreateWorkbookReq implements Built<CreateWorkbookReq, CreateWorkb
 
   CreateWorkbookReq._();
 
-  factory CreateWorkbookReq([void updates(CreateWorkbookReqBuilder b)]) = _$CreateWorkbookReq;
+  factory CreateWorkbookReq([void updates(CreateWorkbookReqBuilder b)]) =
+      _$CreateWorkbookReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateWorkbookReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateWorkbookReq> get serializer => _$CreateWorkbookReqSerializer();
+  static Serializer<CreateWorkbookReq> get serializer =>
+      _$CreateWorkbookReqSerializer();
 }
 
-class _$CreateWorkbookReqSerializer implements PrimitiveSerializer<CreateWorkbookReq> {
+class _$CreateWorkbookReqSerializer
+    implements PrimitiveSerializer<CreateWorkbookReq> {
   @override
   final Iterable<Type> types = const [CreateWorkbookReq, _$CreateWorkbookReq];
 
@@ -62,7 +66,9 @@ class _$CreateWorkbookReqSerializer implements PrimitiveSerializer<CreateWorkboo
     CreateWorkbookReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +125,3 @@ class _$CreateWorkbookReqSerializer implements PrimitiveSerializer<CreateWorkboo
     return result.build();
   }
 }
-

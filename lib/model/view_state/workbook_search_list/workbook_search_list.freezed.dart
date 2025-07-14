@@ -17,6 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$WorkbookSearchListViewSuccessState {
   BuiltList<WorkbookListContent> get workbookContents;
   PageInfo get pageInfo;
+  String get keyword;
+  bool get isSearch;
 
   /// Create a copy of WorkbookSearchListViewSuccessState
   /// with the given fields replaced by the non-null parameter values.
@@ -36,16 +38,23 @@ mixin _$WorkbookSearchListViewSuccessState {
             const DeepCollectionEquality()
                 .equals(other.workbookContents, workbookContents) &&
             (identical(other.pageInfo, pageInfo) ||
-                other.pageInfo == pageInfo));
+                other.pageInfo == pageInfo) &&
+            (identical(other.keyword, keyword) || other.keyword == keyword) &&
+            (identical(other.isSearch, isSearch) ||
+                other.isSearch == isSearch));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(workbookContents), pageInfo);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(workbookContents),
+      pageInfo,
+      keyword,
+      isSearch);
 
   @override
   String toString() {
-    return 'WorkbookSearchListViewSuccessState(workbookContents: $workbookContents, pageInfo: $pageInfo)';
+    return 'WorkbookSearchListViewSuccessState(workbookContents: $workbookContents, pageInfo: $pageInfo, keyword: $keyword, isSearch: $isSearch)';
   }
 }
 
@@ -57,7 +66,10 @@ abstract mixin class $WorkbookSearchListViewSuccessStateCopyWith<$Res> {
       _$WorkbookSearchListViewSuccessStateCopyWithImpl;
   @useResult
   $Res call(
-      {BuiltList<WorkbookListContent> workbookContents, PageInfo pageInfo});
+      {BuiltList<WorkbookListContent> workbookContents,
+      PageInfo pageInfo,
+      String keyword,
+      bool isSearch});
 }
 
 /// @nodoc
@@ -75,6 +87,8 @@ class _$WorkbookSearchListViewSuccessStateCopyWithImpl<$Res>
   $Res call({
     Object? workbookContents = null,
     Object? pageInfo = null,
+    Object? keyword = null,
+    Object? isSearch = null,
   }) {
     return _then(_self.copyWith(
       workbookContents: null == workbookContents
@@ -85,6 +99,14 @@ class _$WorkbookSearchListViewSuccessStateCopyWithImpl<$Res>
           ? _self.pageInfo
           : pageInfo // ignore: cast_nullable_to_non_nullable
               as PageInfo,
+      keyword: null == keyword
+          ? _self.keyword
+          : keyword // ignore: cast_nullable_to_non_nullable
+              as String,
+      isSearch: null == isSearch
+          ? _self.isSearch
+          : isSearch // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -94,12 +116,21 @@ class _$WorkbookSearchListViewSuccessStateCopyWithImpl<$Res>
 class _WorkbookSearchListViewSuccessState
     implements WorkbookSearchListViewSuccessState {
   const _WorkbookSearchListViewSuccessState(
-      {required this.workbookContents, required this.pageInfo});
+      {required this.workbookContents,
+      required this.pageInfo,
+      this.keyword = '',
+      this.isSearch = false});
 
   @override
   final BuiltList<WorkbookListContent> workbookContents;
   @override
   final PageInfo pageInfo;
+  @override
+  @JsonKey()
+  final String keyword;
+  @override
+  @JsonKey()
+  final bool isSearch;
 
   /// Create a copy of WorkbookSearchListViewSuccessState
   /// with the given fields replaced by the non-null parameter values.
@@ -119,16 +150,23 @@ class _WorkbookSearchListViewSuccessState
             const DeepCollectionEquality()
                 .equals(other.workbookContents, workbookContents) &&
             (identical(other.pageInfo, pageInfo) ||
-                other.pageInfo == pageInfo));
+                other.pageInfo == pageInfo) &&
+            (identical(other.keyword, keyword) || other.keyword == keyword) &&
+            (identical(other.isSearch, isSearch) ||
+                other.isSearch == isSearch));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(workbookContents), pageInfo);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(workbookContents),
+      pageInfo,
+      keyword,
+      isSearch);
 
   @override
   String toString() {
-    return 'WorkbookSearchListViewSuccessState(workbookContents: $workbookContents, pageInfo: $pageInfo)';
+    return 'WorkbookSearchListViewSuccessState(workbookContents: $workbookContents, pageInfo: $pageInfo, keyword: $keyword, isSearch: $isSearch)';
   }
 }
 
@@ -142,7 +180,10 @@ abstract mixin class _$WorkbookSearchListViewSuccessStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {BuiltList<WorkbookListContent> workbookContents, PageInfo pageInfo});
+      {BuiltList<WorkbookListContent> workbookContents,
+      PageInfo pageInfo,
+      String keyword,
+      bool isSearch});
 }
 
 /// @nodoc
@@ -160,6 +201,8 @@ class __$WorkbookSearchListViewSuccessStateCopyWithImpl<$Res>
   $Res call({
     Object? workbookContents = null,
     Object? pageInfo = null,
+    Object? keyword = null,
+    Object? isSearch = null,
   }) {
     return _then(_WorkbookSearchListViewSuccessState(
       workbookContents: null == workbookContents
@@ -170,6 +213,14 @@ class __$WorkbookSearchListViewSuccessStateCopyWithImpl<$Res>
           ? _self.pageInfo
           : pageInfo // ignore: cast_nullable_to_non_nullable
               as PageInfo,
+      keyword: null == keyword
+          ? _self.keyword
+          : keyword // ignore: cast_nullable_to_non_nullable
+              as String,
+      isSearch: null == isSearch
+          ? _self.isSearch
+          : isSearch // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }

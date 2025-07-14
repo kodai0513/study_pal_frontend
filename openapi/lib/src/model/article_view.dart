@@ -11,11 +11,11 @@ part 'article_view.g.dart';
 /// ArticleView
 ///
 /// Properties:
-/// * [id] 
-/// * [description] 
-/// * [userId] 
-/// * [userName] 
-/// * [userNickname] 
+/// * [id]
+/// * [description]
+/// * [userId]
+/// * [userName]
+/// * [userNickname]
 @BuiltValue()
 abstract class ArticleView implements Built<ArticleView, ArticleViewBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -77,10 +77,12 @@ class _$ArticleViewSerializer implements PrimitiveSerializer<ArticleView> {
       specifiedType: const FullType(String),
     );
     yield r'userNickname';
-    yield object.userNickname == null ? null : serializers.serialize(
-      object.userNickname,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.userNickname == null
+        ? null
+        : serializers.serialize(
+            object.userNickname,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -89,7 +91,9 @@ class _$ArticleViewSerializer implements PrimitiveSerializer<ArticleView> {
     ArticleView object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -168,4 +172,3 @@ class _$ArticleViewSerializer implements PrimitiveSerializer<ArticleView> {
     return result.build();
   }
 }
-

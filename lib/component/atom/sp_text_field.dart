@@ -15,14 +15,13 @@ class SpTextField extends StatelessWidget {
   final void Function(String)? onChanged;
   final String? placeholder;
   final void Function(String)? onSubmitted;
-  
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if(label != null)
+      children: <Widget>[
+        if (label != null)
           Text(
             label!,
             style: const TextStyle(
@@ -36,7 +35,7 @@ class SpTextField extends StatelessWidget {
           onSubmitted: onSubmitted,
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
-            hintText: placeholder ?? "",
+            hintText: placeholder ?? '',
           ),
         ),
       ],

@@ -15,11 +15,12 @@ part 'create_problem_req.g.dart';
 /// CreateProblemReq
 ///
 /// Properties:
-/// * [descriptionProblems] 
-/// * [selectionProblems] 
-/// * [trueOrFalseProblems] 
+/// * [descriptionProblems]
+/// * [selectionProblems]
+/// * [trueOrFalseProblems]
 @BuiltValue()
-abstract class CreateProblemReq implements Built<CreateProblemReq, CreateProblemReqBuilder> {
+abstract class CreateProblemReq
+    implements Built<CreateProblemReq, CreateProblemReqBuilder> {
   @BuiltValueField(wireName: r'descriptionProblems')
   BuiltList<CreateDescriptionProblemReq> get descriptionProblems;
 
@@ -31,16 +32,19 @@ abstract class CreateProblemReq implements Built<CreateProblemReq, CreateProblem
 
   CreateProblemReq._();
 
-  factory CreateProblemReq([void updates(CreateProblemReqBuilder b)]) = _$CreateProblemReq;
+  factory CreateProblemReq([void updates(CreateProblemReqBuilder b)]) =
+      _$CreateProblemReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateProblemReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateProblemReq> get serializer => _$CreateProblemReqSerializer();
+  static Serializer<CreateProblemReq> get serializer =>
+      _$CreateProblemReqSerializer();
 }
 
-class _$CreateProblemReqSerializer implements PrimitiveSerializer<CreateProblemReq> {
+class _$CreateProblemReqSerializer
+    implements PrimitiveSerializer<CreateProblemReq> {
   @override
   final Iterable<Type> types = const [CreateProblemReq, _$CreateProblemReq];
 
@@ -55,17 +59,20 @@ class _$CreateProblemReqSerializer implements PrimitiveSerializer<CreateProblemR
     yield r'descriptionProblems';
     yield serializers.serialize(
       object.descriptionProblems,
-      specifiedType: const FullType(BuiltList, [FullType(CreateDescriptionProblemReq)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(CreateDescriptionProblemReq)]),
     );
     yield r'selectionProblems';
     yield serializers.serialize(
       object.selectionProblems,
-      specifiedType: const FullType(BuiltList, [FullType(CreateSelectionProblemReq)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(CreateSelectionProblemReq)]),
     );
     yield r'trueOrFalseProblems';
     yield serializers.serialize(
       object.trueOrFalseProblems,
-      specifiedType: const FullType(BuiltList, [FullType(CreateTrueOrFalseProblemReq)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(CreateTrueOrFalseProblemReq)]),
     );
   }
 
@@ -75,7 +82,9 @@ class _$CreateProblemReqSerializer implements PrimitiveSerializer<CreateProblemR
     CreateProblemReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -93,21 +102,24 @@ class _$CreateProblemReqSerializer implements PrimitiveSerializer<CreateProblemR
         case r'descriptionProblems':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CreateDescriptionProblemReq)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(CreateDescriptionProblemReq)]),
           ) as BuiltList<CreateDescriptionProblemReq>;
           result.descriptionProblems.replace(valueDes);
           break;
         case r'selectionProblems':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CreateSelectionProblemReq)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(CreateSelectionProblemReq)]),
           ) as BuiltList<CreateSelectionProblemReq>;
           result.selectionProblems.replace(valueDes);
           break;
         case r'trueOrFalseProblems':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CreateTrueOrFalseProblemReq)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(CreateTrueOrFalseProblemReq)]),
           ) as BuiltList<CreateTrueOrFalseProblemReq>;
           result.trueOrFalseProblems.replace(valueDes);
           break;
@@ -139,4 +151,3 @@ class _$CreateProblemReqSerializer implements PrimitiveSerializer<CreateProblemR
     return result.build();
   }
 }
-

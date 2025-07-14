@@ -18,13 +18,14 @@ class SpIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconColor = color ?? Theme.of(context).colorScheme.primary;
-    final imageWidget = (iconUrl != null && iconUrl!.isNotEmpty)
+    final Color iconColor = color ?? Theme.of(context).colorScheme.primary;
+    final Widget imageWidget = (iconUrl != null && iconUrl!.isNotEmpty)
         ? Image.network(
             iconUrl!,
             width: size,
             height: size,
-            errorBuilder: (_, __, ___) => Icon(defaultIcon, size: size, color: color),
+            errorBuilder: (_, __, ___) =>
+                Icon(defaultIcon, size: size, color: color),
           )
         : Icon(defaultIcon, size: size, color: iconColor);
 

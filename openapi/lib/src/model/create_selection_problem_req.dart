@@ -13,11 +13,13 @@ part 'create_selection_problem_req.g.dart';
 /// CreateSelectionProblemReq
 ///
 /// Properties:
-/// * [selectionProblemAnswers] 
-/// * [statement] 
-/// * [workbookCategoryId] 
+/// * [selectionProblemAnswers]
+/// * [statement]
+/// * [workbookCategoryId]
 @BuiltValue()
-abstract class CreateSelectionProblemReq implements Built<CreateSelectionProblemReq, CreateSelectionProblemReqBuilder> {
+abstract class CreateSelectionProblemReq
+    implements
+        Built<CreateSelectionProblemReq, CreateSelectionProblemReqBuilder> {
   @BuiltValueField(wireName: r'selectionProblemAnswers')
   BuiltList<CreateSelectionProblemAnswerReq> get selectionProblemAnswers;
 
@@ -29,18 +31,25 @@ abstract class CreateSelectionProblemReq implements Built<CreateSelectionProblem
 
   CreateSelectionProblemReq._();
 
-  factory CreateSelectionProblemReq([void updates(CreateSelectionProblemReqBuilder b)]) = _$CreateSelectionProblemReq;
+  factory CreateSelectionProblemReq(
+          [void updates(CreateSelectionProblemReqBuilder b)]) =
+      _$CreateSelectionProblemReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateSelectionProblemReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateSelectionProblemReq> get serializer => _$CreateSelectionProblemReqSerializer();
+  static Serializer<CreateSelectionProblemReq> get serializer =>
+      _$CreateSelectionProblemReqSerializer();
 }
 
-class _$CreateSelectionProblemReqSerializer implements PrimitiveSerializer<CreateSelectionProblemReq> {
+class _$CreateSelectionProblemReqSerializer
+    implements PrimitiveSerializer<CreateSelectionProblemReq> {
   @override
-  final Iterable<Type> types = const [CreateSelectionProblemReq, _$CreateSelectionProblemReq];
+  final Iterable<Type> types = const [
+    CreateSelectionProblemReq,
+    _$CreateSelectionProblemReq
+  ];
 
   @override
   final String wireName = r'CreateSelectionProblemReq';
@@ -53,7 +62,8 @@ class _$CreateSelectionProblemReqSerializer implements PrimitiveSerializer<Creat
     yield r'selectionProblemAnswers';
     yield serializers.serialize(
       object.selectionProblemAnswers,
-      specifiedType: const FullType(BuiltList, [FullType(CreateSelectionProblemAnswerReq)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(CreateSelectionProblemAnswerReq)]),
     );
     yield r'statement';
     yield serializers.serialize(
@@ -61,10 +71,12 @@ class _$CreateSelectionProblemReqSerializer implements PrimitiveSerializer<Creat
       specifiedType: const FullType(String),
     );
     yield r'workbookCategoryId';
-    yield object.workbookCategoryId == null ? null : serializers.serialize(
-      object.workbookCategoryId,
-      specifiedType: const FullType.nullable(String),
-    );
+    yield object.workbookCategoryId == null
+        ? null
+        : serializers.serialize(
+            object.workbookCategoryId,
+            specifiedType: const FullType.nullable(String),
+          );
   }
 
   @override
@@ -73,7 +85,9 @@ class _$CreateSelectionProblemReqSerializer implements PrimitiveSerializer<Creat
     CreateSelectionProblemReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -91,7 +105,8 @@ class _$CreateSelectionProblemReqSerializer implements PrimitiveSerializer<Creat
         case r'selectionProblemAnswers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CreateSelectionProblemAnswerReq)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(CreateSelectionProblemAnswerReq)]),
           ) as BuiltList<CreateSelectionProblemAnswerReq>;
           result.selectionProblemAnswers.replace(valueDes);
           break;
@@ -138,4 +153,3 @@ class _$CreateSelectionProblemReqSerializer implements PrimitiveSerializer<Creat
     return result.build();
   }
 }
-

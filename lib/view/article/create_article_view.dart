@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:study_pal_frontend/component/atom/sp_elevated_button.dart';
-import 'package:study_pal_frontend/component/organisms/article/article_post_text_area.dart';
-import 'package:study_pal_frontend/model/view_state/article/create_article_view_state.dart';
-import 'package:study_pal_frontend/view/common/state_driven_view.dart';
-import 'package:study_pal_frontend/view/timeline/timeline_view.dart';
-import 'package:study_pal_frontend/view_model/article/create_article_view_model.dart';
+
+import '../../component/atom/sp_elevated_button.dart';
+import '../../component/organisms/article/article_post_text_area.dart';
+import '../../model/view_state/article/create_article_view_state.dart';
+import '../../view_model/article/create_article_view_model.dart';
+import '../common/state_driven_view.dart';
+import '../timeline/timeline_view.dart';
 
 class CreateArticleView extends ConsumerWidget {
   const CreateArticleView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(createArticleViewModelProvider);
-    final viewModel = ref.watch(createArticleViewModelProvider.notifier);
+    final CreateArticleViewState state = ref.watch(createArticleViewModelProvider);
+    final CreateArticleViewModel viewModel = ref.watch(createArticleViewModelProvider.notifier);
 
     return StateDrivenView<CreateArticleViewSuccessState>(
       state: state,
-      successBuilder: (state) {
+      successBuilder: (CreateArticleViewSuccessState state) {
         return Form(
           child: Column(
-            children: [
+            children: <Widget>[
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(16),
                   child: ArticlePostTextArea(
                     focusNode: state.articlePostFocus,
-                    text: "つぶやきましょう",
+                    text: 'つぶやきましょう',
                     maxLines: 20,
                     onChanged: viewModel.onChangeDescription,
                   ),
@@ -46,16 +47,15 @@ class CreateArticleView extends ConsumerWidget {
                     enabled: state.canPost,
                     label: '投稿',
                     onPressed: () async {
-                      final goRouter = GoRouter.of(context);
-                      bool result = await viewModel.post();
-                      if(result) {
-                        ref.read(createSuccessReloadedProvider.notifier).state = false;
-                        goRouter.go(
-                          Uri(
-                            path: '/timeline',
-                            queryParameters:  {'reload': 'true'},
-                            ).toString()
-                        );
+                      final GoRouter goRouter = GoRouter.of(context);
+                      final bool result = await viewModel.post();
+                      if (result) {
+                        ref.read(createSuccessReloadedProvider.notifier).state =
+                            false;
+                        goRouter.go(Uri(
+                          path: '/timeline',
+                          queryParameters: <String, dynamic>{'reload': 'true'},
+                        ).toString());
                       }
                     },
                   ),

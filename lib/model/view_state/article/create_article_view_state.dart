@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:study_pal_frontend/core/mold/model/common_view_state.dart';
 import 'package:formz/formz.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../core/mold/model/common_view_state.dart';
 
 part 'create_article_view_state.freezed.dart';
 
@@ -15,7 +16,7 @@ class DescriptionInput extends FormzInput<String, DescriptionValidationError> {
 
   @override
   DescriptionValidationError? validator(String value) {
-    final trimmed = value.trim();
+    final String trimmed = value.trim();
     if (trimmed.isEmpty) {
       return DescriptionValidationError.empty;
     } else if (trimmed.length > maxLength) {
@@ -47,21 +48,24 @@ class DescriptionInput extends FormzInput<String, DescriptionValidationError> {
 //       formStatus: formStatus ?? this.formStatus,
 //       );
 //   }
-  
+
 //   bool get canPost => Formz.validate([descriptionInput]);
 // }
 
 @freezed
-abstract class CreateArticleViewSuccessState with _$CreateArticleViewSuccessState {
-  const factory CreateArticleViewSuccessState({
-    required DescriptionInput descriptionInput,
-    required FocusNode articlePostFocus,
-    required FormzSubmissionStatus formStatus
-  }) = _CreateArticleViewSuccessState;
+abstract class CreateArticleViewSuccessState
+    with _$CreateArticleViewSuccessState {
+  const factory CreateArticleViewSuccessState(
+          {required DescriptionInput descriptionInput,
+          required FocusNode articlePostFocus,
+          required FormzSubmissionStatus formStatus}) =
+      _CreateArticleViewSuccessState;
 }
 
-extension CreateArticleViewSuccessStateExtension on CreateArticleViewSuccessState {
-  bool get canPost => Formz.validate([descriptionInput]);
+extension CreateArticleViewSuccessStateExtension
+    on CreateArticleViewSuccessState {
+  bool get canPost => Formz.validate(
+      <FormzInput<String, DescriptionValidationError>>[descriptionInput]);
 }
 
 typedef CreateArticleViewState = CommonViewState<CreateArticleViewSuccessState>;
