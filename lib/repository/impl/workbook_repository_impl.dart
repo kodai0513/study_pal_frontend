@@ -13,15 +13,29 @@ class WorkbookRepositoryImpl implements WorkbookRepository {
   final Ref ref;
 
   @override
-  Future<Result<WorkbookListViewResp, RepositoryException>> getWorkbooks({
+  Future<Result<WorkbookListViewResp, RepositoryException>>
+      getWorkbookByKeyword({
     required String keyword,
     required int pageSize,
     String? nextPageToken,
   }) async {
     final DefaultApi api =
         DefaultApi(ref.read(dioProvider), standardSerializers);
-    return responseHandler(() => api.searchApiV1WorkbooksGet(
+    return responseHandler(() => api.getWorkbooksByKeywordApiV1WorkbooksGet(
           keyword: keyword,
+          pageSize: pageSize,
+          nextPageToken: nextPageToken,
+        ));
+  }
+
+  @override
+  Future<Result<WorkbookListViewResp, RepositoryException>> getWorkbookForMe({
+    required int pageSize,
+    String? nextPageToken,
+  }) async {
+    final DefaultApi api =
+        DefaultApi(ref.read(dioProvider), standardSerializers);
+    return responseHandler(() => api.getWorkbooksForMeApiV1WorkbooksMeGet(
           pageSize: pageSize,
           nextPageToken: nextPageToken,
         ));

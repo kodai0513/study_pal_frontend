@@ -39,13 +39,14 @@ class WorkbookSearchListViewModel
         (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>)
             .pageSuccessState;
     state = const WorkbookSearchListViewState.loading();
-    return _workbookRepository.getWorkbooks(
+    return _workbookRepository.getWorkbookByKeyword(
         keyword: data.keyword,
         pageSize: PageSize.defaultSize,
         nextPageToken: nextPageToken);
   }
 
   Future<void> search() async {
+    state = const WorkbookSearchListViewState.loading();
     final Result<WorkbookListViewResp, RepositoryException> result =
         await _getData();
 

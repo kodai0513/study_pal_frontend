@@ -4,6 +4,7 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -13,6 +14,7 @@ import 'package:openapi/src/model/create_article_req.dart';
 import 'package:openapi/src/model/create_problem_req.dart';
 import 'package:openapi/src/model/create_workbook_req.dart';
 import 'package:openapi/src/model/description_problem_resp.dart';
+import 'package:openapi/src/model/http_validation_error.dart';
 import 'package:openapi/src/model/problem_resp.dart';
 import 'package:openapi/src/model/selection_problem_resp.dart';
 import 'package:openapi/src/model/timeline_view_resp.dart';
@@ -26,6 +28,7 @@ import 'package:openapi/src/model/workbook_list_view_resp.dart';
 import 'package:openapi/src/model/workbook_resp.dart';
 
 class DefaultApi {
+
   final Dio _dio;
 
   final Serializers _serializers;
@@ -33,10 +36,10 @@ class DefaultApi {
   const DefaultApi(this._dio, this._serializers);
 
   /// Create
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [createArticleReq]
+  /// * [createArticleReq] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -46,7 +49,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ArticleResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ArticleResp>> createApiV1ArticlesPost({
+  Future<Response<ArticleResp>> createApiV1ArticlesPost({ 
     required CreateArticleReq createArticleReq,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -73,11 +76,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(CreateArticleReq);
-      _bodyData =
-          _serializers.serialize(createArticleReq, specifiedType: _type);
-    } catch (error, stackTrace) {
+      _bodyData = _serializers.serialize(createArticleReq, specifiedType: _type);
+
+    } catch(error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -100,12 +103,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(ArticleResp),
-            ) as ArticleResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ArticleResp),
+      ) as ArticleResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -129,11 +131,11 @@ class DefaultApi {
   }
 
   /// Create
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [workbookId]
-  /// * [createProblemReq]
+  /// * [workbookId] 
+  /// * [createProblemReq] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -143,7 +145,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ProblemResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ProblemResp>> createApiV1ProblemsWorkbookIdPost({
+  Future<Response<ProblemResp>> createApiV1ProblemsWorkbookIdPost({ 
     required String workbookId,
     required CreateProblemReq createProblemReq,
     CancelToken? cancelToken,
@@ -153,10 +155,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/v1/problems/{workbook_id}'.replaceAll(
-        '{' r'workbook_id' '}',
-        encodeQueryParameter(_serializers, workbookId, const FullType(String))
-            .toString());
+    final _path = r'/api/v1/problems/{workbook_id}'.replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -174,11 +173,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(CreateProblemReq);
-      _bodyData =
-          _serializers.serialize(createProblemReq, specifiedType: _type);
-    } catch (error, stackTrace) {
+      _bodyData = _serializers.serialize(createProblemReq, specifiedType: _type);
+
+    } catch(error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -201,12 +200,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(ProblemResp),
-            ) as ProblemResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ProblemResp),
+      ) as ProblemResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -230,10 +228,10 @@ class DefaultApi {
   }
 
   /// Create
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [createWorkbookReq]
+  /// * [createWorkbookReq] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -243,7 +241,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WorkbookResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WorkbookResp>> createApiV1WorkbooksPost({
+  Future<Response<WorkbookResp>> createApiV1WorkbooksPost({ 
     required CreateWorkbookReq createWorkbookReq,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -270,11 +268,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(CreateWorkbookReq);
-      _bodyData =
-          _serializers.serialize(createWorkbookReq, specifiedType: _type);
-    } catch (error, stackTrace) {
+      _bodyData = _serializers.serialize(createWorkbookReq, specifiedType: _type);
+
+    } catch(error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -297,12 +295,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(WorkbookResp),
-            ) as WorkbookResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(WorkbookResp),
+      ) as WorkbookResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -326,10 +323,10 @@ class DefaultApi {
   }
 
   /// Delete
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [articleId]
+  /// * [articleId] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -339,7 +336,7 @@ class DefaultApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteApiV1ArticlesArticleIdDelete({
+  Future<Response<void>> deleteApiV1ArticlesArticleIdDelete({ 
     required String articleId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -348,10 +345,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/v1/articles/{article_id}'.replaceAll(
-        '{' r'article_id' '}',
-        encodeQueryParameter(_serializers, articleId, const FullType(String))
-            .toString());
+    final _path = r'/api/v1/articles/{article_id}'.replaceAll('{' r'article_id' '}', encodeQueryParameter(_serializers, articleId, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -376,10 +370,10 @@ class DefaultApi {
   }
 
   /// Delete
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [workbookId]
+  /// * [workbookId] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -389,7 +383,7 @@ class DefaultApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteApiV1WorkbooksWorkbookIdDelete({
+  Future<Response<void>> deleteApiV1WorkbooksWorkbookIdDelete({ 
     required String workbookId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -398,10 +392,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/v1/workbooks/{workbook_id}'.replaceAll(
-        '{' r'workbook_id' '}',
-        encodeQueryParameter(_serializers, workbookId, const FullType(String))
-            .toString());
+    final _path = r'/api/v1/workbooks/{workbook_id}'.replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -426,11 +417,11 @@ class DefaultApi {
   }
 
   /// Delete
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [descriptionProblemId]
-  /// * [workbookId]
+  /// * [descriptionProblemId] 
+  /// * [workbookId] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -440,8 +431,7 @@ class DefaultApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>>
-      deleteApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete({
+  Future<Response<void>> deleteApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdDelete({ 
     required String descriptionProblemId,
     required String workbookId,
     CancelToken? cancelToken,
@@ -451,18 +441,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/api/v1/workbooks/{workbook_id}/description-problems/{description_problem_id}'
-            .replaceAll(
-                '{' r'description_problem_id' '}',
-                encodeQueryParameter(_serializers, descriptionProblemId,
-                        const FullType(String))
-                    .toString())
-            .replaceAll(
-                '{' r'workbook_id' '}',
-                encodeQueryParameter(
-                        _serializers, workbookId, const FullType(String))
-                    .toString());
+    final _path = r'/api/v1/workbooks/{workbook_id}/description-problems/{description_problem_id}'.replaceAll('{' r'description_problem_id' '}', encodeQueryParameter(_serializers, descriptionProblemId, const FullType(String)).toString()).replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -487,11 +466,11 @@ class DefaultApi {
   }
 
   /// Delete
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [selectionProblemId]
-  /// * [workbookId]
+  /// * [selectionProblemId] 
+  /// * [workbookId] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -501,8 +480,7 @@ class DefaultApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>>
-      deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete({
+  Future<Response<void>> deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete({ 
     required String selectionProblemId,
     required String workbookId,
     CancelToken? cancelToken,
@@ -512,18 +490,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id}'
-            .replaceAll(
-                '{' r'selection_problem_id' '}',
-                encodeQueryParameter(_serializers, selectionProblemId,
-                        const FullType(String))
-                    .toString())
-            .replaceAll(
-                '{' r'workbook_id' '}',
-                encodeQueryParameter(
-                        _serializers, workbookId, const FullType(String))
-                    .toString());
+    final _path = r'/api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id}'.replaceAll('{' r'selection_problem_id' '}', encodeQueryParameter(_serializers, selectionProblemId, const FullType(String)).toString()).replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -548,11 +515,11 @@ class DefaultApi {
   }
 
   /// Delete
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [trueOrFalseProblemId]
-  /// * [workbookId]
+  /// * [trueOrFalseProblemId] 
+  /// * [workbookId] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -562,8 +529,7 @@ class DefaultApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>>
-      deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete({
+  Future<Response<void>> deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete({ 
     required String trueOrFalseProblemId,
     required String workbookId,
     CancelToken? cancelToken,
@@ -573,18 +539,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id}'
-            .replaceAll(
-                '{' r'true_or_false_problem_id' '}',
-                encodeQueryParameter(_serializers, trueOrFalseProblemId,
-                        const FullType(String))
-                    .toString())
-            .replaceAll(
-                '{' r'workbook_id' '}',
-                encodeQueryParameter(
-                        _serializers, workbookId, const FullType(String))
-                    .toString());
+    final _path = r'/api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id}'.replaceAll('{' r'true_or_false_problem_id' '}', encodeQueryParameter(_serializers, trueOrFalseProblemId, const FullType(String)).toString()).replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -608,100 +563,13 @@ class DefaultApi {
     return _response;
   }
 
-  /// Index
-  ///
-  ///
-  /// Parameters:
-  /// * [nextPageToken]
-  /// * [pageSize]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [TimelineViewResp] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<TimelineViewResp>> indexApiV1TimelinesGet({
-    String? nextPageToken,
-    int? pageSize = 20,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/v1/timelines';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      r'next_page_token': encodeQueryParameter(
-          _serializers, nextPageToken, const FullType(String)),
-      if (pageSize != null)
-        r'page_size':
-            encodeQueryParameter(_serializers, pageSize, const FullType(int)),
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    TimelineViewResp? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(TimelineViewResp),
-            ) as TimelineViewResp;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<TimelineViewResp>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Search
-  ///
+  /// Get Workbooks By Keyword
+  /// 
   ///
   /// Parameters:
-  /// * [keyword]
-  /// * [nextPageToken]
-  /// * [pageSize]
+  /// * [keyword] 
+  /// * [nextPageToken] 
+  /// * [pageSize] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -711,7 +579,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WorkbookListViewResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WorkbookListViewResp>> searchApiV1WorkbooksGet({
+  Future<Response<WorkbookListViewResp>> getWorkbooksByKeywordApiV1WorkbooksGet({ 
     String? keyword = '',
     String? nextPageToken,
     int? pageSize = 20,
@@ -736,14 +604,9 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (keyword != null)
-        r'keyword':
-            encodeQueryParameter(_serializers, keyword, const FullType(String)),
-      r'next_page_token': encodeQueryParameter(
-          _serializers, nextPageToken, const FullType(String)),
-      if (pageSize != null)
-        r'page_size':
-            encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+      if (keyword != null) r'keyword': encodeQueryParameter(_serializers, keyword, const FullType(String)),
+      r'next_page_token': encodeQueryParameter(_serializers, nextPageToken, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -759,12 +622,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(WorkbookListViewResp),
-            ) as WorkbookListViewResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(WorkbookListViewResp),
+      ) as WorkbookListViewResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -787,12 +649,178 @@ class DefaultApi {
     );
   }
 
-  /// Update
-  ///
+  /// Get Workbooks For Me
+  /// 
   ///
   /// Parameters:
-  /// * [articleId]
-  /// * [updateArticleReq]
+  /// * [nextPageToken] 
+  /// * [pageSize] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [WorkbookListViewResp] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<WorkbookListViewResp>> getWorkbooksForMeApiV1WorkbooksMeGet({ 
+    String? nextPageToken,
+    int? pageSize = 20,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/api/v1/workbooks/me';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'next_page_token': encodeQueryParameter(_serializers, nextPageToken, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    WorkbookListViewResp? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(WorkbookListViewResp),
+      ) as WorkbookListViewResp;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<WorkbookListViewResp>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Index
+  /// 
+  ///
+  /// Parameters:
+  /// * [nextPageToken] 
+  /// * [pageSize] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [TimelineViewResp] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<TimelineViewResp>> indexApiV1TimelinesGet({ 
+    String? nextPageToken,
+    int? pageSize = 20,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/api/v1/timelines';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'next_page_token': encodeQueryParameter(_serializers, nextPageToken, const FullType(String)),
+      if (pageSize != null) r'page_size': encodeQueryParameter(_serializers, pageSize, const FullType(int)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    TimelineViewResp? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(TimelineViewResp),
+      ) as TimelineViewResp;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<TimelineViewResp>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Update
+  /// 
+  ///
+  /// Parameters:
+  /// * [articleId] 
+  /// * [updateArticleReq] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -802,7 +830,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ArticleResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ArticleResp>> updateApiV1ArticlesArticleIdPut({
+  Future<Response<ArticleResp>> updateApiV1ArticlesArticleIdPut({ 
     required String articleId,
     required UpdateArticleReq updateArticleReq,
     CancelToken? cancelToken,
@@ -812,10 +840,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/v1/articles/{article_id}'.replaceAll(
-        '{' r'article_id' '}',
-        encodeQueryParameter(_serializers, articleId, const FullType(String))
-            .toString());
+    final _path = r'/api/v1/articles/{article_id}'.replaceAll('{' r'article_id' '}', encodeQueryParameter(_serializers, articleId, const FullType(String)).toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -833,11 +858,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(UpdateArticleReq);
-      _bodyData =
-          _serializers.serialize(updateArticleReq, specifiedType: _type);
-    } catch (error, stackTrace) {
+      _bodyData = _serializers.serialize(updateArticleReq, specifiedType: _type);
+
+    } catch(error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -860,12 +885,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(ArticleResp),
-            ) as ArticleResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ArticleResp),
+      ) as ArticleResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -889,12 +913,12 @@ class DefaultApi {
   }
 
   /// Update
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [descriptionProblemId]
-  /// * [workbookId]
-  /// * [updateDescriptionProblemReq]
+  /// * [descriptionProblemId] 
+  /// * [workbookId] 
+  /// * [updateDescriptionProblemReq] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -904,8 +928,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DescriptionProblemResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DescriptionProblemResp>>
-      updateApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut({
+  Future<Response<DescriptionProblemResp>> updateApiV1WorkbooksWorkbookIdDescriptionProblemsDescriptionProblemIdPut({ 
     required String descriptionProblemId,
     required String workbookId,
     required UpdateDescriptionProblemReq updateDescriptionProblemReq,
@@ -916,18 +939,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/api/v1/workbooks/{workbook_id}/description-problems/{description_problem_id}'
-            .replaceAll(
-                '{' r'description_problem_id' '}',
-                encodeQueryParameter(_serializers, descriptionProblemId,
-                        const FullType(String))
-                    .toString())
-            .replaceAll(
-                '{' r'workbook_id' '}',
-                encodeQueryParameter(
-                        _serializers, workbookId, const FullType(String))
-                    .toString());
+    final _path = r'/api/v1/workbooks/{workbook_id}/description-problems/{description_problem_id}'.replaceAll('{' r'description_problem_id' '}', encodeQueryParameter(_serializers, descriptionProblemId, const FullType(String)).toString()).replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -945,11 +957,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(UpdateDescriptionProblemReq);
-      _bodyData = _serializers.serialize(updateDescriptionProblemReq,
-          specifiedType: _type);
-    } catch (error, stackTrace) {
+      _bodyData = _serializers.serialize(updateDescriptionProblemReq, specifiedType: _type);
+
+    } catch(error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -972,12 +984,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(DescriptionProblemResp),
-            ) as DescriptionProblemResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(DescriptionProblemResp),
+      ) as DescriptionProblemResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1001,11 +1012,11 @@ class DefaultApi {
   }
 
   /// Update
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [workbookId]
-  /// * [updateWorkbookReq]
+  /// * [workbookId] 
+  /// * [updateWorkbookReq] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1015,7 +1026,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WorkbookResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WorkbookResp>> updateApiV1WorkbooksWorkbookIdPut({
+  Future<Response<WorkbookResp>> updateApiV1WorkbooksWorkbookIdPut({ 
     required String workbookId,
     required UpdateWorkbookReq updateWorkbookReq,
     CancelToken? cancelToken,
@@ -1025,10 +1036,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/v1/workbooks/{workbook_id}'.replaceAll(
-        '{' r'workbook_id' '}',
-        encodeQueryParameter(_serializers, workbookId, const FullType(String))
-            .toString());
+    final _path = r'/api/v1/workbooks/{workbook_id}'.replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -1046,11 +1054,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(UpdateWorkbookReq);
-      _bodyData =
-          _serializers.serialize(updateWorkbookReq, specifiedType: _type);
-    } catch (error, stackTrace) {
+      _bodyData = _serializers.serialize(updateWorkbookReq, specifiedType: _type);
+
+    } catch(error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1073,12 +1081,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(WorkbookResp),
-            ) as WorkbookResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(WorkbookResp),
+      ) as WorkbookResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1102,12 +1109,12 @@ class DefaultApi {
   }
 
   /// Update
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [selectionProblemId]
-  /// * [workbookId]
-  /// * [updateSelectionProblemReq]
+  /// * [selectionProblemId] 
+  /// * [workbookId] 
+  /// * [updateSelectionProblemReq] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1117,8 +1124,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SelectionProblemResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SelectionProblemResp>>
-      updateApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut({
+  Future<Response<SelectionProblemResp>> updateApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdPut({ 
     required String selectionProblemId,
     required String workbookId,
     required UpdateSelectionProblemReq updateSelectionProblemReq,
@@ -1129,18 +1135,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id}'
-            .replaceAll(
-                '{' r'selection_problem_id' '}',
-                encodeQueryParameter(_serializers, selectionProblemId,
-                        const FullType(String))
-                    .toString())
-            .replaceAll(
-                '{' r'workbook_id' '}',
-                encodeQueryParameter(
-                        _serializers, workbookId, const FullType(String))
-                    .toString());
+    final _path = r'/api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id}'.replaceAll('{' r'selection_problem_id' '}', encodeQueryParameter(_serializers, selectionProblemId, const FullType(String)).toString()).replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -1158,11 +1153,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(UpdateSelectionProblemReq);
-      _bodyData = _serializers.serialize(updateSelectionProblemReq,
-          specifiedType: _type);
-    } catch (error, stackTrace) {
+      _bodyData = _serializers.serialize(updateSelectionProblemReq, specifiedType: _type);
+
+    } catch(error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1185,12 +1180,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(SelectionProblemResp),
-            ) as SelectionProblemResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SelectionProblemResp),
+      ) as SelectionProblemResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1214,12 +1208,12 @@ class DefaultApi {
   }
 
   /// Update
-  ///
+  /// 
   ///
   /// Parameters:
-  /// * [trueOrFalseProblemId]
-  /// * [workbookId]
-  /// * [updateTrueOrFalseProblemReq]
+  /// * [trueOrFalseProblemId] 
+  /// * [workbookId] 
+  /// * [updateTrueOrFalseProblemReq] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1229,8 +1223,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [TrueOrFalseProblemResp] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<TrueOrFalseProblemResp>>
-      updateApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut({
+  Future<Response<TrueOrFalseProblemResp>> updateApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdPut({ 
     required String trueOrFalseProblemId,
     required String workbookId,
     required UpdateTrueOrFalseProblemReq updateTrueOrFalseProblemReq,
@@ -1241,18 +1234,7 @@ class DefaultApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id}'
-            .replaceAll(
-                '{' r'true_or_false_problem_id' '}',
-                encodeQueryParameter(_serializers, trueOrFalseProblemId,
-                        const FullType(String))
-                    .toString())
-            .replaceAll(
-                '{' r'workbook_id' '}',
-                encodeQueryParameter(
-                        _serializers, workbookId, const FullType(String))
-                    .toString());
+    final _path = r'/api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id}'.replaceAll('{' r'true_or_false_problem_id' '}', encodeQueryParameter(_serializers, trueOrFalseProblemId, const FullType(String)).toString()).replaceAll('{' r'workbook_id' '}', encodeQueryParameter(_serializers, workbookId, const FullType(String)).toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -1270,11 +1252,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(UpdateTrueOrFalseProblemReq);
-      _bodyData = _serializers.serialize(updateTrueOrFalseProblemReq,
-          specifiedType: _type);
-    } catch (error, stackTrace) {
+      _bodyData = _serializers.serialize(updateTrueOrFalseProblemReq, specifiedType: _type);
+
+    } catch(error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
+         requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1297,12 +1279,11 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(TrueOrFalseProblemResp),
-            ) as TrueOrFalseProblemResp;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(TrueOrFalseProblemResp),
+      ) as TrueOrFalseProblemResp;
+
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1324,4 +1305,5 @@ class DefaultApi {
       extra: _response.extra,
     );
   }
+
 }

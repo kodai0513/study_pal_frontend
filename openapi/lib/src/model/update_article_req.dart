@@ -11,28 +11,24 @@ part 'update_article_req.g.dart';
 /// UpdateArticleReq
 ///
 /// Properties:
-/// * [description]
+/// * [description] 
 @BuiltValue()
-abstract class UpdateArticleReq
-    implements Built<UpdateArticleReq, UpdateArticleReqBuilder> {
+abstract class UpdateArticleReq implements Built<UpdateArticleReq, UpdateArticleReqBuilder> {
   @BuiltValueField(wireName: r'description')
   String get description;
 
   UpdateArticleReq._();
 
-  factory UpdateArticleReq([void updates(UpdateArticleReqBuilder b)]) =
-      _$UpdateArticleReq;
+  factory UpdateArticleReq([void updates(UpdateArticleReqBuilder b)]) = _$UpdateArticleReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateArticleReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateArticleReq> get serializer =>
-      _$UpdateArticleReqSerializer();
+  static Serializer<UpdateArticleReq> get serializer => _$UpdateArticleReqSerializer();
 }
 
-class _$UpdateArticleReqSerializer
-    implements PrimitiveSerializer<UpdateArticleReq> {
+class _$UpdateArticleReqSerializer implements PrimitiveSerializer<UpdateArticleReq> {
   @override
   final Iterable<Type> types = const [UpdateArticleReq, _$UpdateArticleReq];
 
@@ -57,9 +53,7 @@ class _$UpdateArticleReqSerializer
     UpdateArticleReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -109,3 +103,4 @@ class _$UpdateArticleReqSerializer
     return result.build();
   }
 }
+

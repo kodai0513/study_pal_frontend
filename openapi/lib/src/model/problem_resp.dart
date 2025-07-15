@@ -15,9 +15,9 @@ part 'problem_resp.g.dart';
 /// ProblemResp
 ///
 /// Properties:
-/// * [descriptionProblems]
-/// * [selectionProblems]
-/// * [trueOrFalseProblems]
+/// * [descriptionProblems] 
+/// * [selectionProblems] 
+/// * [trueOrFalseProblems] 
 @BuiltValue()
 abstract class ProblemResp implements Built<ProblemResp, ProblemRespBuilder> {
   @BuiltValueField(wireName: r'descriptionProblems')
@@ -55,20 +55,17 @@ class _$ProblemRespSerializer implements PrimitiveSerializer<ProblemResp> {
     yield r'descriptionProblems';
     yield serializers.serialize(
       object.descriptionProblems,
-      specifiedType:
-          const FullType(BuiltList, [FullType(DescriptionProblemResp)]),
+      specifiedType: const FullType(BuiltList, [FullType(DescriptionProblemResp)]),
     );
     yield r'selectionProblems';
     yield serializers.serialize(
       object.selectionProblems,
-      specifiedType:
-          const FullType(BuiltList, [FullType(SelectionProblemResp)]),
+      specifiedType: const FullType(BuiltList, [FullType(SelectionProblemResp)]),
     );
     yield r'trueOrFalseProblems';
     yield serializers.serialize(
       object.trueOrFalseProblems,
-      specifiedType:
-          const FullType(BuiltList, [FullType(TrueOrFalseProblemResp)]),
+      specifiedType: const FullType(BuiltList, [FullType(TrueOrFalseProblemResp)]),
     );
   }
 
@@ -78,9 +75,7 @@ class _$ProblemRespSerializer implements PrimitiveSerializer<ProblemResp> {
     ProblemResp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -98,24 +93,21 @@ class _$ProblemRespSerializer implements PrimitiveSerializer<ProblemResp> {
         case r'descriptionProblems':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(DescriptionProblemResp)]),
+            specifiedType: const FullType(BuiltList, [FullType(DescriptionProblemResp)]),
           ) as BuiltList<DescriptionProblemResp>;
           result.descriptionProblems.replace(valueDes);
           break;
         case r'selectionProblems':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(SelectionProblemResp)]),
+            specifiedType: const FullType(BuiltList, [FullType(SelectionProblemResp)]),
           ) as BuiltList<SelectionProblemResp>;
           result.selectionProblems.replace(valueDes);
           break;
         case r'trueOrFalseProblems':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(TrueOrFalseProblemResp)]),
+            specifiedType: const FullType(BuiltList, [FullType(TrueOrFalseProblemResp)]),
           ) as BuiltList<TrueOrFalseProblemResp>;
           result.trueOrFalseProblems.replace(valueDes);
           break;
@@ -147,3 +139,4 @@ class _$ProblemRespSerializer implements PrimitiveSerializer<ProblemResp> {
     return result.build();
   }
 }
+

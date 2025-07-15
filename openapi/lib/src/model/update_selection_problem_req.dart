@@ -13,13 +13,11 @@ part 'update_selection_problem_req.g.dart';
 /// UpdateSelectionProblemReq
 ///
 /// Properties:
-/// * [selectionProblemAnswers]
-/// * [statement]
-/// * [workbookCategoryId]
+/// * [selectionProblemAnswers] 
+/// * [statement] 
+/// * [workbookCategoryId] 
 @BuiltValue()
-abstract class UpdateSelectionProblemReq
-    implements
-        Built<UpdateSelectionProblemReq, UpdateSelectionProblemReqBuilder> {
+abstract class UpdateSelectionProblemReq implements Built<UpdateSelectionProblemReq, UpdateSelectionProblemReqBuilder> {
   @BuiltValueField(wireName: r'selectionProblemAnswers')
   BuiltList<UpdateSelectionProblemAnswerReq> get selectionProblemAnswers;
 
@@ -31,25 +29,18 @@ abstract class UpdateSelectionProblemReq
 
   UpdateSelectionProblemReq._();
 
-  factory UpdateSelectionProblemReq(
-          [void updates(UpdateSelectionProblemReqBuilder b)]) =
-      _$UpdateSelectionProblemReq;
+  factory UpdateSelectionProblemReq([void updates(UpdateSelectionProblemReqBuilder b)]) = _$UpdateSelectionProblemReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateSelectionProblemReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateSelectionProblemReq> get serializer =>
-      _$UpdateSelectionProblemReqSerializer();
+  static Serializer<UpdateSelectionProblemReq> get serializer => _$UpdateSelectionProblemReqSerializer();
 }
 
-class _$UpdateSelectionProblemReqSerializer
-    implements PrimitiveSerializer<UpdateSelectionProblemReq> {
+class _$UpdateSelectionProblemReqSerializer implements PrimitiveSerializer<UpdateSelectionProblemReq> {
   @override
-  final Iterable<Type> types = const [
-    UpdateSelectionProblemReq,
-    _$UpdateSelectionProblemReq
-  ];
+  final Iterable<Type> types = const [UpdateSelectionProblemReq, _$UpdateSelectionProblemReq];
 
   @override
   final String wireName = r'UpdateSelectionProblemReq';
@@ -62,8 +53,7 @@ class _$UpdateSelectionProblemReqSerializer
     yield r'selectionProblemAnswers';
     yield serializers.serialize(
       object.selectionProblemAnswers,
-      specifiedType: const FullType(
-          BuiltList, [FullType(UpdateSelectionProblemAnswerReq)]),
+      specifiedType: const FullType(BuiltList, [FullType(UpdateSelectionProblemAnswerReq)]),
     );
     yield r'statement';
     yield serializers.serialize(
@@ -71,12 +61,10 @@ class _$UpdateSelectionProblemReqSerializer
       specifiedType: const FullType(String),
     );
     yield r'workbookCategoryId';
-    yield object.workbookCategoryId == null
-        ? null
-        : serializers.serialize(
-            object.workbookCategoryId,
-            specifiedType: const FullType.nullable(String),
-          );
+    yield object.workbookCategoryId == null ? null : serializers.serialize(
+      object.workbookCategoryId,
+      specifiedType: const FullType.nullable(String),
+    );
   }
 
   @override
@@ -85,9 +73,7 @@ class _$UpdateSelectionProblemReqSerializer
     UpdateSelectionProblemReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -105,8 +91,7 @@ class _$UpdateSelectionProblemReqSerializer
         case r'selectionProblemAnswers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(
-                BuiltList, [FullType(UpdateSelectionProblemAnswerReq)]),
+            specifiedType: const FullType(BuiltList, [FullType(UpdateSelectionProblemAnswerReq)]),
           ) as BuiltList<UpdateSelectionProblemAnswerReq>;
           result.selectionProblemAnswers.replace(valueDes);
           break;
@@ -153,3 +138,4 @@ class _$UpdateSelectionProblemReqSerializer
     return result.build();
   }
 }
+
