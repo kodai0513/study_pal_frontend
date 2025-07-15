@@ -11,8 +11,8 @@ part 'page_info.g.dart';
 /// PageInfo
 ///
 /// Properties:
-/// * [nextPageToken]
-/// * [pageSize]
+/// * [nextPageToken] 
+/// * [pageSize] 
 @BuiltValue()
 abstract class PageInfo implements Built<PageInfo, PageInfoBuilder> {
   @BuiltValueField(wireName: r'nextPageToken')
@@ -45,12 +45,10 @@ class _$PageInfoSerializer implements PrimitiveSerializer<PageInfo> {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'nextPageToken';
-    yield object.nextPageToken == null
-        ? null
-        : serializers.serialize(
-            object.nextPageToken,
-            specifiedType: const FullType.nullable(String),
-          );
+    yield object.nextPageToken == null ? null : serializers.serialize(
+      object.nextPageToken,
+      specifiedType: const FullType.nullable(String),
+    );
     yield r'pageSize';
     yield serializers.serialize(
       object.pageSize,
@@ -64,9 +62,7 @@ class _$PageInfoSerializer implements PrimitiveSerializer<PageInfo> {
     PageInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -124,3 +120,4 @@ class _$PageInfoSerializer implements PrimitiveSerializer<PageInfo> {
     return result.build();
   }
 }
+

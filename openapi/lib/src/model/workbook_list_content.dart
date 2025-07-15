@@ -11,12 +11,11 @@ part 'workbook_list_content.g.dart';
 /// WorkbookListContent
 ///
 /// Properties:
-/// * [id]
-/// * [description]
-/// * [title]
+/// * [id] 
+/// * [description] 
+/// * [title] 
 @BuiltValue()
-abstract class WorkbookListContent
-    implements Built<WorkbookListContent, WorkbookListContentBuilder> {
+abstract class WorkbookListContent implements Built<WorkbookListContent, WorkbookListContentBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -28,24 +27,18 @@ abstract class WorkbookListContent
 
   WorkbookListContent._();
 
-  factory WorkbookListContent([void updates(WorkbookListContentBuilder b)]) =
-      _$WorkbookListContent;
+  factory WorkbookListContent([void updates(WorkbookListContentBuilder b)]) = _$WorkbookListContent;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WorkbookListContentBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WorkbookListContent> get serializer =>
-      _$WorkbookListContentSerializer();
+  static Serializer<WorkbookListContent> get serializer => _$WorkbookListContentSerializer();
 }
 
-class _$WorkbookListContentSerializer
-    implements PrimitiveSerializer<WorkbookListContent> {
+class _$WorkbookListContentSerializer implements PrimitiveSerializer<WorkbookListContent> {
   @override
-  final Iterable<Type> types = const [
-    WorkbookListContent,
-    _$WorkbookListContent
-  ];
+  final Iterable<Type> types = const [WorkbookListContent, _$WorkbookListContent];
 
   @override
   final String wireName = r'WorkbookListContent';
@@ -78,9 +71,7 @@ class _$WorkbookListContentSerializer
     WorkbookListContent object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -144,3 +135,4 @@ class _$WorkbookListContentSerializer
     return result.build();
   }
 }
+

@@ -11,16 +11,15 @@ part 'workbook_resp.g.dart';
 /// WorkbookResp
 ///
 /// Properties:
-/// * [createdAt]
-/// * [updatedAt]
-/// * [id]
-/// * [description]
-/// * [isPublic]
-/// * [title]
-/// * [userId]
+/// * [createdAt] 
+/// * [updatedAt] 
+/// * [id] 
+/// * [description] 
+/// * [isPublic] 
+/// * [title] 
+/// * [userId] 
 @BuiltValue()
-abstract class WorkbookResp
-    implements Built<WorkbookResp, WorkbookRespBuilder> {
+abstract class WorkbookResp implements Built<WorkbookResp, WorkbookRespBuilder> {
   @BuiltValueField(wireName: r'createdAt')
   DateTime get createdAt;
 
@@ -108,9 +107,7 @@ class _$WorkbookRespSerializer implements PrimitiveSerializer<WorkbookResp> {
     WorkbookResp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -202,3 +199,4 @@ class _$WorkbookRespSerializer implements PrimitiveSerializer<WorkbookResp> {
     return result.build();
   }
 }
+

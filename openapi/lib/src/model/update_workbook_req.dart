@@ -11,11 +11,10 @@ part 'update_workbook_req.g.dart';
 /// UpdateWorkbookReq
 ///
 /// Properties:
-/// * [title]
-/// * [description]
+/// * [title] 
+/// * [description] 
 @BuiltValue()
-abstract class UpdateWorkbookReq
-    implements Built<UpdateWorkbookReq, UpdateWorkbookReqBuilder> {
+abstract class UpdateWorkbookReq implements Built<UpdateWorkbookReq, UpdateWorkbookReqBuilder> {
   @BuiltValueField(wireName: r'title')
   String get title;
 
@@ -24,19 +23,16 @@ abstract class UpdateWorkbookReq
 
   UpdateWorkbookReq._();
 
-  factory UpdateWorkbookReq([void updates(UpdateWorkbookReqBuilder b)]) =
-      _$UpdateWorkbookReq;
+  factory UpdateWorkbookReq([void updates(UpdateWorkbookReqBuilder b)]) = _$UpdateWorkbookReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateWorkbookReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateWorkbookReq> get serializer =>
-      _$UpdateWorkbookReqSerializer();
+  static Serializer<UpdateWorkbookReq> get serializer => _$UpdateWorkbookReqSerializer();
 }
 
-class _$UpdateWorkbookReqSerializer
-    implements PrimitiveSerializer<UpdateWorkbookReq> {
+class _$UpdateWorkbookReqSerializer implements PrimitiveSerializer<UpdateWorkbookReq> {
   @override
   final Iterable<Type> types = const [UpdateWorkbookReq, _$UpdateWorkbookReq];
 
@@ -66,9 +62,7 @@ class _$UpdateWorkbookReqSerializer
     UpdateWorkbookReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -125,3 +119,4 @@ class _$UpdateWorkbookReqSerializer
     return result.build();
   }
 }
+
