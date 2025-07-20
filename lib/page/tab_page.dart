@@ -32,9 +32,6 @@ class TabPage extends StatelessWidget {
     final int currentIndex = _locationToTabIndex(location);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_tabs[currentIndex].label),
-      ),
       body: child,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

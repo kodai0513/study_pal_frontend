@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:openapi/openapi.dart';
 
 import '../../component/atom/sp_icon.dart';
-import '../../component/organisms/workbook/workbook_list_card.dart';
+import '../../component/organisms/workbook/workbook_list_title.dart';
 import '../../constants/ui/ui_size.dart';
 import '../../model/view_state/favorite_workbook_list/favorite_workbook_list.dart';
 import '../../view_model/favorite_workbook/favorite_workbook_list_view_model.dart';
@@ -34,7 +34,7 @@ class FavoriteWorkbookListView extends ConsumerWidget {
           itemCount: state.workbookContents.length,
           itemBuilder: (BuildContext context, int index) {
             final WorkbookListContent item = state.workbookContents[index];
-            return WorkbookListCard(
+            return WorkbookListTitle(
               key: ValueKey<String>(item.id),
               icon: const SpIcon(defaultIcon: Icons.book, size: UiSize.medium),
               title: item.title,

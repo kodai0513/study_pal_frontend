@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../constants/ui/ui_size.dart';
 import '../../model/view_state/home_header/home_header_view_state.dart';
 import '../../view/favorite_workbook/favorite_workbook_list_view.dart';
 import '../../view/home_header/home_header_view.dart';
@@ -19,15 +21,29 @@ class HoemePage extends ConsumerWidget {
     if (state.selectedKey == 'favorite') {
       listView = FavoriteWorkbookListView(key: key);
     }
-    return Column(children: <Widget>[
-      Container(
-        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-        height: 50,
-        child: HomeHeaderView(key: key),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ホーム'),
+        actions: <Widget>[
+          IconButton(
+            iconSize: UiSize.medium * 0.5,
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              context.push('/workbook/create');
+            },
+          ),
+        ],
       ),
-      Expanded(
-        child: listView,
+      body: Column(
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+            height: 50,
+            child: const HomeHeaderView(),
+          ),
+          Expanded(child: listView),
+        ],
       ),
-    ]);
+    );
   }
 }

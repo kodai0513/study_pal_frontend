@@ -10,6 +10,9 @@ class TimelinePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('タイムライン'),
+      ),
       body: TimelineView(key: key),
       floatingActionButton: SpFloatingActionButton(
         icon: Icons.add,

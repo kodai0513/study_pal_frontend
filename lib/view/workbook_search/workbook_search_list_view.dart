@@ -4,7 +4,7 @@ import 'package:openapi/openapi.dart';
 import 'package:very_good_infinite_list/very_good_infinite_list.dart';
 
 import '../../component/atom/sp_icon.dart';
-import '../../component/organisms/workbook/workbook_list_card.dart';
+import '../../component/organisms/workbook/workbook_list_title.dart';
 import '../../constants/ui/ui_size.dart';
 import '../../model/view_state/workbook_search_list/workbook_search_list.dart';
 import '../../view_model/workbook_search/workbook_search_list_view_model.dart';
@@ -49,7 +49,7 @@ class WorkbookSearchListView extends ConsumerWidget {
           itemBuilder: (BuildContext context, int index) {
             final WorkbookListContent item = state.workbookContents[index];
 
-            return WorkbookListCard(
+            return WorkbookListTitle(
               key: ValueKey<String>(item.id),
               icon: const SpIcon(defaultIcon: Icons.book, size: UiSize.medium),
               title: item.title,
