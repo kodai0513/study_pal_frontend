@@ -40,6 +40,21 @@ class WorkbookRepositoryImpl implements WorkbookRepository {
           nextPageToken: nextPageToken,
         ));
   }
+
+  @override
+  Future<Result<WorkbookListViewResp, RepositoryException>>
+      getWorkbookForFavorites({
+    required int pageSize,
+    String? nextPageToken,
+  }) async {
+    final DefaultApi api =
+        DefaultApi(ref.read(dioProvider), standardSerializers);
+    return responseHandler(
+        () => api.getWorkbooksForFavoritesApiV1WorkbooksFavoritesGet(
+              pageSize: pageSize,
+              nextPageToken: nextPageToken,
+            ));
+  }
 }
 
 final Provider<WorkbookRepositoryImpl> workbookRepositoryProvider =

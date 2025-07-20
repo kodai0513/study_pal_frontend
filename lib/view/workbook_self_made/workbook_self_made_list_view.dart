@@ -9,8 +9,8 @@ import '../../model/view_state/workbook_self_made_list/workbook_self_made_list.d
 import '../../view_model/workbook_self_made/workbook_self_made_list_view_model.dart';
 import '../common/state_driven_view.dart';
 
-class WorkbookSelfMadeList extends ConsumerWidget {
-  const WorkbookSelfMadeList({super.key});
+class WorkbookSelfMadeListView extends ConsumerWidget {
+  const WorkbookSelfMadeListView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

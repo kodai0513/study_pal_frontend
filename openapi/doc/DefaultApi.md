@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**deleteApiV1WorkbooksWorkbookIdSelectionProblemsSelectionProblemIdDelete**](DefaultApi.md#deleteapiv1workbooksworkbookidselectionproblemsselectionproblemiddelete) | **DELETE** /api/v1/workbooks/{workbook_id}/selection-problems/{selection_problem_id} | Delete
 [**deleteApiV1WorkbooksWorkbookIdTrueOrFalseProblemsTrueOrFalseProblemIdDelete**](DefaultApi.md#deleteapiv1workbooksworkbookidtrueorfalseproblemstrueorfalseproblemiddelete) | **DELETE** /api/v1/workbooks/{workbook_id}/true-or-false-problems/{true_or_false_problem_id} | Delete
 [**getWorkbooksByKeywordApiV1WorkbooksGet**](DefaultApi.md#getworkbooksbykeywordapiv1workbooksget) | **GET** /api/v1/workbooks/ | Get Workbooks By Keyword
+[**getWorkbooksForFavoritesApiV1WorkbooksFavoritesGet**](DefaultApi.md#getworkbooksforfavoritesapiv1workbooksfavoritesget) | **GET** /api/v1/workbooks/favorites | Get Workbooks For Favorites
 [**getWorkbooksForMeApiV1WorkbooksMeGet**](DefaultApi.md#getworkbooksformeapiv1workbooksmeget) | **GET** /api/v1/workbooks/me | Get Workbooks For Me
 [**indexApiV1TimelinesGet**](DefaultApi.md#indexapiv1timelinesget) | **GET** /api/v1/timelines | Index
 [**updateApiV1ArticlesArticleIdPut**](DefaultApi.md#updateapiv1articlesarticleidput) | **PUT** /api/v1/articles/{article_id} | Update
@@ -385,6 +386,49 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keyword** | **String**|  | [optional] [default to '']
+ **nextPageToken** | **String**|  | [optional] 
+ **pageSize** | **int**|  | [optional] [default to 20]
+
+### Return type
+
+[**WorkbookListViewResp**](WorkbookListViewResp.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getWorkbooksForFavoritesApiV1WorkbooksFavoritesGet**
+> WorkbookListViewResp getWorkbooksForFavoritesApiV1WorkbooksFavoritesGet(nextPageToken, pageSize)
+
+Get Workbooks For Favorites
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+
+final api = Openapi().getDefaultApi();
+final String nextPageToken = nextPageToken_example; // String | 
+final int pageSize = 56; // int | 
+
+try {
+    final response = api.getWorkbooksForFavoritesApiV1WorkbooksFavoritesGet(nextPageToken, pageSize);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling DefaultApi->getWorkbooksForFavoritesApiV1WorkbooksFavoritesGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
  **nextPageToken** | **String**|  | [optional] 
  **pageSize** | **int**|  | [optional] [default to 20]
 

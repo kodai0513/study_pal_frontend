@@ -14,4 +14,10 @@ abstract class WorkbookRepository {
     required int pageSize,
     String? nextPageToken,
   });
+
+  Future<Result<WorkbookListViewResp, RepositoryException>>
+      getWorkbookForFavorites({
+    required int pageSize,
+    String? nextPageToken,
+  });
 }
