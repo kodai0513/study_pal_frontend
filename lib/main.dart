@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const ColorScheme defaultColors = ColorScheme.light(
+    const ColorScheme defaultColors = ColorScheme.dark(
       primary: Colors.blue,
       onPrimary: Colors.blueGrey,
       primaryContainer: Colors.blue,

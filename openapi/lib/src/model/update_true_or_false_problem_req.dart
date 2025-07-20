@@ -11,13 +11,11 @@ part 'update_true_or_false_problem_req.g.dart';
 /// UpdateTrueOrFalseProblemReq
 ///
 /// Properties:
-/// * [isCorrect]
-/// * [statement]
-/// * [workbookCategoryId]
+/// * [isCorrect] 
+/// * [statement] 
+/// * [workbookCategoryId] 
 @BuiltValue()
-abstract class UpdateTrueOrFalseProblemReq
-    implements
-        Built<UpdateTrueOrFalseProblemReq, UpdateTrueOrFalseProblemReqBuilder> {
+abstract class UpdateTrueOrFalseProblemReq implements Built<UpdateTrueOrFalseProblemReq, UpdateTrueOrFalseProblemReqBuilder> {
   @BuiltValueField(wireName: r'isCorrect')
   bool get isCorrect;
 
@@ -29,25 +27,18 @@ abstract class UpdateTrueOrFalseProblemReq
 
   UpdateTrueOrFalseProblemReq._();
 
-  factory UpdateTrueOrFalseProblemReq(
-          [void updates(UpdateTrueOrFalseProblemReqBuilder b)]) =
-      _$UpdateTrueOrFalseProblemReq;
+  factory UpdateTrueOrFalseProblemReq([void updates(UpdateTrueOrFalseProblemReqBuilder b)]) = _$UpdateTrueOrFalseProblemReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateTrueOrFalseProblemReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateTrueOrFalseProblemReq> get serializer =>
-      _$UpdateTrueOrFalseProblemReqSerializer();
+  static Serializer<UpdateTrueOrFalseProblemReq> get serializer => _$UpdateTrueOrFalseProblemReqSerializer();
 }
 
-class _$UpdateTrueOrFalseProblemReqSerializer
-    implements PrimitiveSerializer<UpdateTrueOrFalseProblemReq> {
+class _$UpdateTrueOrFalseProblemReqSerializer implements PrimitiveSerializer<UpdateTrueOrFalseProblemReq> {
   @override
-  final Iterable<Type> types = const [
-    UpdateTrueOrFalseProblemReq,
-    _$UpdateTrueOrFalseProblemReq
-  ];
+  final Iterable<Type> types = const [UpdateTrueOrFalseProblemReq, _$UpdateTrueOrFalseProblemReq];
 
   @override
   final String wireName = r'UpdateTrueOrFalseProblemReq';
@@ -68,12 +59,10 @@ class _$UpdateTrueOrFalseProblemReqSerializer
       specifiedType: const FullType(String),
     );
     yield r'workbookCategoryId';
-    yield object.workbookCategoryId == null
-        ? null
-        : serializers.serialize(
-            object.workbookCategoryId,
-            specifiedType: const FullType.nullable(String),
-          );
+    yield object.workbookCategoryId == null ? null : serializers.serialize(
+      object.workbookCategoryId,
+      specifiedType: const FullType.nullable(String),
+    );
   }
 
   @override
@@ -82,9 +71,7 @@ class _$UpdateTrueOrFalseProblemReqSerializer
     UpdateTrueOrFalseProblemReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -149,3 +136,4 @@ class _$UpdateTrueOrFalseProblemReqSerializer
     return result.build();
   }
 }
+
