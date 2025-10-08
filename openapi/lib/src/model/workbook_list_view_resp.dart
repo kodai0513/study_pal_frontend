@@ -14,11 +14,10 @@ part 'workbook_list_view_resp.g.dart';
 /// WorkbookListViewResp
 ///
 /// Properties:
-/// * [data]
-/// * [pageInfo]
+/// * [data] 
+/// * [pageInfo] 
 @BuiltValue()
-abstract class WorkbookListViewResp
-    implements Built<WorkbookListViewResp, WorkbookListViewRespBuilder> {
+abstract class WorkbookListViewResp implements Built<WorkbookListViewResp, WorkbookListViewRespBuilder> {
   @BuiltValueField(wireName: r'data')
   BuiltList<WorkbookListContent> get data;
 
@@ -27,24 +26,18 @@ abstract class WorkbookListViewResp
 
   WorkbookListViewResp._();
 
-  factory WorkbookListViewResp([void updates(WorkbookListViewRespBuilder b)]) =
-      _$WorkbookListViewResp;
+  factory WorkbookListViewResp([void updates(WorkbookListViewRespBuilder b)]) = _$WorkbookListViewResp;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WorkbookListViewRespBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WorkbookListViewResp> get serializer =>
-      _$WorkbookListViewRespSerializer();
+  static Serializer<WorkbookListViewResp> get serializer => _$WorkbookListViewRespSerializer();
 }
 
-class _$WorkbookListViewRespSerializer
-    implements PrimitiveSerializer<WorkbookListViewResp> {
+class _$WorkbookListViewRespSerializer implements PrimitiveSerializer<WorkbookListViewResp> {
   @override
-  final Iterable<Type> types = const [
-    WorkbookListViewResp,
-    _$WorkbookListViewResp
-  ];
+  final Iterable<Type> types = const [WorkbookListViewResp, _$WorkbookListViewResp];
 
   @override
   final String wireName = r'WorkbookListViewResp';
@@ -72,9 +65,7 @@ class _$WorkbookListViewRespSerializer
     WorkbookListViewResp object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -92,8 +83,7 @@ class _$WorkbookListViewRespSerializer
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(WorkbookListContent)]),
+            specifiedType: const FullType(BuiltList, [FullType(WorkbookListContent)]),
           ) as BuiltList<WorkbookListContent>;
           result.data.replace(valueDes);
           break;
@@ -132,3 +122,4 @@ class _$WorkbookListViewRespSerializer
     return result.build();
   }
 }
+

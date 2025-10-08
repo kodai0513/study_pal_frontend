@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class TabPage extends StatelessWidget {
-
   const TabPage({super.key, required this.child});
   final Widget child;
 
@@ -33,12 +32,10 @@ class TabPage extends StatelessWidget {
     final int currentIndex = _locationToTabIndex(location);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_tabs[currentIndex].label),
-      ),
       body: child,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
         currentIndex: currentIndex,
         items: _tabs
             .map((_TabInfo tab) => BottomNavigationBarItem(
@@ -55,7 +52,6 @@ class TabPage extends StatelessWidget {
 }
 
 class _TabInfo {
-
   const _TabInfo({
     required this.label,
     required this.icon,

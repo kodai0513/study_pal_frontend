@@ -11,28 +11,24 @@ part 'create_article_req.g.dart';
 /// CreateArticleReq
 ///
 /// Properties:
-/// * [description]
+/// * [description] 
 @BuiltValue()
-abstract class CreateArticleReq
-    implements Built<CreateArticleReq, CreateArticleReqBuilder> {
+abstract class CreateArticleReq implements Built<CreateArticleReq, CreateArticleReqBuilder> {
   @BuiltValueField(wireName: r'description')
   String get description;
 
   CreateArticleReq._();
 
-  factory CreateArticleReq([void updates(CreateArticleReqBuilder b)]) =
-      _$CreateArticleReq;
+  factory CreateArticleReq([void updates(CreateArticleReqBuilder b)]) = _$CreateArticleReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateArticleReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateArticleReq> get serializer =>
-      _$CreateArticleReqSerializer();
+  static Serializer<CreateArticleReq> get serializer => _$CreateArticleReqSerializer();
 }
 
-class _$CreateArticleReqSerializer
-    implements PrimitiveSerializer<CreateArticleReq> {
+class _$CreateArticleReqSerializer implements PrimitiveSerializer<CreateArticleReq> {
   @override
   final Iterable<Type> types = const [CreateArticleReq, _$CreateArticleReq];
 
@@ -57,9 +53,7 @@ class _$CreateArticleReqSerializer
     CreateArticleReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -109,3 +103,4 @@ class _$CreateArticleReqSerializer
     return result.build();
   }
 }
+

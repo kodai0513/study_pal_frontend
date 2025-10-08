@@ -11,13 +11,10 @@ part 'create_selection_problem_answer_req.g.dart';
 /// CreateSelectionProblemAnswerReq
 ///
 /// Properties:
-/// * [isCorrect]
-/// * [statement]
+/// * [isCorrect] 
+/// * [statement] 
 @BuiltValue()
-abstract class CreateSelectionProblemAnswerReq
-    implements
-        Built<CreateSelectionProblemAnswerReq,
-            CreateSelectionProblemAnswerReqBuilder> {
+abstract class CreateSelectionProblemAnswerReq implements Built<CreateSelectionProblemAnswerReq, CreateSelectionProblemAnswerReqBuilder> {
   @BuiltValueField(wireName: r'isCorrect')
   bool get isCorrect;
 
@@ -26,25 +23,18 @@ abstract class CreateSelectionProblemAnswerReq
 
   CreateSelectionProblemAnswerReq._();
 
-  factory CreateSelectionProblemAnswerReq(
-          [void updates(CreateSelectionProblemAnswerReqBuilder b)]) =
-      _$CreateSelectionProblemAnswerReq;
+  factory CreateSelectionProblemAnswerReq([void updates(CreateSelectionProblemAnswerReqBuilder b)]) = _$CreateSelectionProblemAnswerReq;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateSelectionProblemAnswerReqBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateSelectionProblemAnswerReq> get serializer =>
-      _$CreateSelectionProblemAnswerReqSerializer();
+  static Serializer<CreateSelectionProblemAnswerReq> get serializer => _$CreateSelectionProblemAnswerReqSerializer();
 }
 
-class _$CreateSelectionProblemAnswerReqSerializer
-    implements PrimitiveSerializer<CreateSelectionProblemAnswerReq> {
+class _$CreateSelectionProblemAnswerReqSerializer implements PrimitiveSerializer<CreateSelectionProblemAnswerReq> {
   @override
-  final Iterable<Type> types = const [
-    CreateSelectionProblemAnswerReq,
-    _$CreateSelectionProblemAnswerReq
-  ];
+  final Iterable<Type> types = const [CreateSelectionProblemAnswerReq, _$CreateSelectionProblemAnswerReq];
 
   @override
   final String wireName = r'CreateSelectionProblemAnswerReq';
@@ -72,9 +62,7 @@ class _$CreateSelectionProblemAnswerReqSerializer
     CreateSelectionProblemAnswerReq object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   void _deserializeProperties(
@@ -131,3 +119,4 @@ class _$CreateSelectionProblemAnswerReqSerializer
     return result.build();
   }
 }
+

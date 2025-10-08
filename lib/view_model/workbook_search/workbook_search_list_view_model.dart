@@ -34,20 +34,24 @@ class WorkbookSearchListViewModel
 
   Future<Result<WorkbookListViewResp, RepositoryException>> _getData({
     String? nextPageToken,
+    required String keyword,
   }) async {
-    final WorkbookSearchListViewSuccessState data =
-        (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>)
-            .pageSuccessState;
     state = const WorkbookSearchListViewState.loading();
-    return _workbookRepository.getWorkbooks(
-        keyword: data.keyword,
+    return _workbookRepository.getWorkbookByKeyword(
+        keyword: keyword,
         pageSize: PageSize.defaultSize,
         nextPageToken: nextPageToken);
   }
 
   Future<void> search() async {
+    final WorkbookSearchListViewSuccessState data =
+        (state as CommonViewSuccessState<WorkbookSearchListViewSuccessState>)
+            .pageSuccessState;
+
+    state = const WorkbookSearchListViewState.loading();
+
     final Result<WorkbookListViewResp, RepositoryException> result =
-        await _getData();
+        await _getData(keyword: data.keyword);
 
     switch (result) {
       case Ok<WorkbookListViewResp, RepositoryException>(
@@ -78,8 +82,11 @@ class WorkbookSearchListViewModel
       return;
     }
 
+    state = const WorkbookSearchListViewState.loading();
+
     final Result<WorkbookListViewResp, RepositoryException> result =
-        await _getData(nextPageToken: data.pageInfo.nextPageToken);
+        await _getData(
+            keyword: data.keyword, nextPageToken: data.pageInfo.nextPageToken);
 
     switch (result) {
       case Ok<WorkbookListViewResp, RepositoryException>(

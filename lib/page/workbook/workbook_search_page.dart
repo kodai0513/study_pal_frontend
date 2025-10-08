@@ -8,13 +8,18 @@ class WorkbookSearchPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(children: <Widget>[
-      Padding(
-          padding: const EdgeInsets.all(16),
-          child: WorkbookSearchFieldView(key: key)),
-      Expanded(
-        child: WorkbookSearchListView(key: key),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('探す'),
       ),
-    ]);
+      body: Column(children: <Widget>[
+        Padding(
+            padding: const EdgeInsets.all(16),
+            child: WorkbookSearchFieldView(key: key)),
+        Expanded(
+          child: WorkbookSearchListView(key: key),
+        ),
+      ]),
+    );
   }
 }

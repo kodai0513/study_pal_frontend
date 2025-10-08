@@ -3,54 +3,29 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/mold/model/common_view_state.dart';
+import '../common/form/input_text.dart';
 
 part 'create_article_view_state.freezed.dart';
 
 enum DescriptionValidationError { empty, tooLong }
 
-class DescriptionInput extends FormzInput<String, DescriptionValidationError> {
-  const DescriptionInput.pure() : super.pure('');
-  const DescriptionInput.dirty([super.value = '']) : super.dirty();
+class DescriptionInput extends InputText {
+  const DescriptionInput.pure()
+      : super.pure(
+          value: '',
+          maxLength: 400,
+          fieldName: '説明',
+          isEmpty: true,
+        );
 
-  static const int maxLength = 400;
-
-  @override
-  DescriptionValidationError? validator(String value) {
-    final String trimmed = value.trim();
-    if (trimmed.isEmpty) {
-      return DescriptionValidationError.empty;
-    } else if (trimmed.length > maxLength) {
-      return DescriptionValidationError.tooLong;
-    }
-    return null;
-  }
+  const DescriptionInput.dirty([String value = ''])
+      : super.dirty(
+          value: value,
+          maxLength: 400,
+          fieldName: '説明',
+          isEmpty: true,
+        );
 }
-
-// class CreateArticleViewSuccessState {
-//   CreateArticleViewSuccessState({
-//     required this.descriptionInput,
-//     required this.articlePostFocus,
-//     required this.formStatus,
-//   });
-
-//   final DescriptionInput descriptionInput;
-//   final FocusNode articlePostFocus;
-//   final FormzSubmissionStatus formStatus;
-
-//   CreateArticleViewSuccessState copyWith({
-//     DescriptionInput? descriptionInput,
-//     FocusNode? articlePostFocus,
-//     FormzSubmissionStatus? formStatus,
-//   }) {
-//     return CreateArticleViewSuccessState(
-//       descriptionInput: descriptionInput ?? this.descriptionInput,
-//       articlePostFocus: articlePostFocus ?? this.articlePostFocus,
-//       formStatus: formStatus ?? this.formStatus,
-//       );
-//   }
-
-//   bool get canPost => Formz.validate([descriptionInput]);
-// }
 
 @freezed
 abstract class CreateArticleViewSuccessState
@@ -64,8 +39,7 @@ abstract class CreateArticleViewSuccessState
 
 extension CreateArticleViewSuccessStateExtension
     on CreateArticleViewSuccessState {
-  bool get canPost => Formz.validate(
-      <FormzInput<String, DescriptionValidationError>>[descriptionInput]);
+  bool get canPost => Formz.validate(<InputText>[descriptionInput]);
 }
 
 typedef CreateArticleViewState = CommonViewState<CreateArticleViewSuccessState>;

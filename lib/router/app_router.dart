@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../page/article/article_create_page.dart';
+import '../page/home/home_page.dart';
 import '../page/tab_page.dart';
 import '../page/timeline/timeline_page.dart';
+import '../page/workbook/create_workbook_page.dart';
 import '../page/workbook/workbook_search_page.dart';
 
 final GoRouter router = GoRouter(
@@ -15,13 +17,18 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: '/',
           pageBuilder: (BuildContext context, GoRouterState state) =>
-              const MaterialPage<Widget>(child: Placeholder()),
+              const MaterialPage<Widget>(child: HoemePage()),
         ),
         GoRoute(
           path: '/timeline',
           pageBuilder: (BuildContext context, GoRouterState state) =>
               const MaterialPage<Widget>(child: TimelinePage()),
         ),
+        GoRoute(
+            path: '/workbook/create',
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                createSlideUpTransitionPage(
+                    key: state.pageKey, child: const CreateWorkbookPage())),
         GoRoute(
           path: '/workbook/search',
           pageBuilder: (BuildContext context, GoRouterState state) =>
@@ -40,38 +47,38 @@ final GoRouter router = GoRouter(
       ],
     ),
     GoRoute(
-        path: '/article',
-        builder: (BuildContext context, GoRouterState state) =>
-            const Placeholder(),
-        routes: <RouteBase>[
-          GoRoute(
-            path: '/create',
-            pageBuilder: (BuildContext context, GoRouterState state) {
-              return CustomTransitionPage<Widget>(
-                key: state.pageKey,
-                fullscreenDialog: true,
-                child: const ArticleCreatePage(),
-                transitionsBuilder: (BuildContext context,
-                    Animation<double> animation,
-                    Animation<double> secondaryAnimation,
-                    Widget child) {
-                  final CurvedAnimation curvedAnimation = CurvedAnimation(
-                    parent: animation,
-                    curve: Curves.ease,
-                    reverseCurve: Curves.ease,
-                  );
-
-                  return SlideTransition(
-                    position: Tween<Offset>(
-                      begin: const Offset(0, 1),
-                      end: Offset.zero,
-                    ).animate(curvedAnimation),
-                    child: child,
-                  );
-                },
-              );
-            },
-          ),
-        ])
+      path: '/article/create',
+      pageBuilder: (BuildContext context, GoRouterState state) =>
+          createSlideUpTransitionPage(
+              key: state.pageKey, child: const ArticleCreatePage()),
+    ),
   ],
 );
+
+CustomTransitionPage<T> createSlideUpTransitionPage<T>({
+  required LocalKey key,
+  required Widget child,
+  bool fullscreenDialog = true,
+}) {
+  return CustomTransitionPage<T>(
+    key: key,
+    fullscreenDialog: fullscreenDialog,
+    child: child,
+    transitionsBuilder: (BuildContext context, Animation<double> animation,
+        Animation<double> secondaryAnimation, Widget child) {
+      final CurvedAnimation curvedAnimation = CurvedAnimation(
+        parent: animation,
+        curve: Curves.ease,
+        reverseCurve: Curves.ease,
+      );
+
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0, 1),
+          end: Offset.zero,
+        ).animate(curvedAnimation),
+        child: child,
+      );
+    },
+  );
+}
